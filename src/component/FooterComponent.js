@@ -14,6 +14,7 @@ class FooterComponent extends Component {
             <div>
                
                     <h3>this is my footer</h3>
+                    <h1>this is heading</h1>
 
             </div>
         );
