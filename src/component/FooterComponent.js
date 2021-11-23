@@ -13,7 +13,7 @@ class FooterComponent extends Component {
         return (
             <div>
                
-
+       
 
             </div>
         );
