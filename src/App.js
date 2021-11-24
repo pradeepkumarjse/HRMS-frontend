@@ -9,8 +9,6 @@ import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 
 
-
-
 function App(){
     return(
 
