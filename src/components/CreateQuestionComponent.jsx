@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class CreateQuestionComponent extends Component {
    constructor(props){
        super(props)
-       console.log("kjk");
+      
        this.state={
          
             // step 2
@@ -60,10 +60,9 @@ class CreateQuestionComponent extends Component {
 
  
 }
-   notify(){
-          //  toast.success('Record updated..',{position:toast.POSITION.TOP_CENTER});
-   }
-   
+  cancel(){
+    this.props.history.push('/questions');
+  }
 
     saveOrUpdateQuestion = (e) =>{
        
@@ -99,10 +98,7 @@ class CreateQuestionComponent extends Component {
         }       
     }
 
-    cancel(){
-     this.notify()
-      this.props.history.push('/questions'); 
-    }
+   
 
       ChangeQuestionHandler = (event) =>{
         this.setState({question:event.target.value});
@@ -181,7 +177,7 @@ class CreateQuestionComponent extends Component {
                               
                                 <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>cancel</button>
                                
-                               <button onClick={this.notify}>Notify</button>
+                               
 
                                
                                 </div>
