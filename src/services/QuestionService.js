@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const QUESTION_API_BASE_URL="http://localhost:4041/HumanResourceManagementSystem/api/v1/questions";
+const QUESTION_API_BASE_URL="http://localhost:4041/api/v1/questions";
 class QuestionService{
     
     getQuestions(){
