@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Employeeservice from '../services/Employeeservice';
+<<<<<<< HEAD
 import {Link} from 'react-router-dom';
+=======
+>>>>>>> a2d46205663014733b938abb11ec9f343bf7b687
 // import {useNavigate} from 'react-router-dom';
 
 class CreateEmployeeComponent extends Component {
