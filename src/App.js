@@ -7,10 +7,6 @@ import HeaderComponent from './components/HeaderComponent';
 //import FooterComponent from './components/FooterComponent';
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
-import ListQuestionsComponent from './components/ListQuestionsComponent';
-import FooterComponent from './components/FooterComponent';
-import CreateQuestionComponent from './components/CreateQuestionComponent';
-import UpdateQuestionComponent from './components/UpdateQuestionComponent';
 
 
 
@@ -24,9 +20,7 @@ function App(){
                         <div className="container">
                         <Switch>  
                 
-                            <Route path="/" exact component={ListQuestionsComponent} ></Route>
-                            <Route path="/questions" component={ListQuestionsComponent}></Route>
-                            <Route path="/add-question/:id" component={CreateQuestionComponent}></Route> 
+                           
  
 
                             <Route path="/employee" exact component={Showemployee} ></Route>
