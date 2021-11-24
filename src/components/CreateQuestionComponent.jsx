@@ -99,10 +99,7 @@ class CreateQuestionComponent extends Component {
         }       
     }
 
-    cancel(){
-     this.notify()
-      this.props.history.push('/questions'); 
-    }
+   
 
       ChangeQuestionHandler = (event) =>{
         this.setState({question:event.target.value});
@@ -181,7 +178,7 @@ class CreateQuestionComponent extends Component {
                               
                                 <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>cancel</button>
                                
-                               <button onClick={this.notify}>Notify</button>
+                               
 
                                
                                 </div>

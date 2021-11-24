@@ -22,11 +22,10 @@ function App(){
             <div>
               <Router>                
                         <HeaderComponent />
-                      
-
-                        <Link to="/questions"><h1>Question crud</h1></Link>
-                        <Link to="/employee"><h1>Employee</h1></Link>
-                        
+                         <div>
+                           <Link to="/questions"><h3>Question crud</h3></Link>
+                           <Link to="/employee"><h3>Employee</h3></Link>
+                        </div>
                         <div className="container">
                         <Switch>  
                         
