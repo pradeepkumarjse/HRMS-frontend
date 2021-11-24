@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class CreateQuestionComponent extends Component {
    constructor(props){
        super(props)
-       console.log("kjk");
+      
        this.state={
          
             // step 2
@@ -60,10 +60,9 @@ class CreateQuestionComponent extends Component {
 
  
 }
-   notify(){
-          //  toast.success('Record updated..',{position:toast.POSITION.TOP_CENTER});
-   }
-   
+  cancel(){
+    this.props.history.push('/questions');
+  }
 
     saveOrUpdateQuestion = (e) =>{
        
