@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+import { BrowserRouter as Router,Link,Route,Switch } from 'react-router-dom';
 
 import Showemployee from './components/Showemployee';
 import HeaderComponent from './components/HeaderComponent';
@@ -23,10 +23,14 @@ function App(){
               <Router>                
                         <HeaderComponent />
                       
+
+                        <Link to="/questions"><h1>Question crud</h1></Link>
+                        <Link to="/employee"><h1>Employee</h1></Link>
+                        
                         <div className="container">
                         <Switch>  
                         
-                        <Route path="/" exact component={ListQuestionsComponent} ></Route>
+                             
                             <Route path="/questions" component={ListQuestionsComponent}></Route>
                             <Route path="/add-question/:id" component={CreateQuestionComponent}></Route> 
  
