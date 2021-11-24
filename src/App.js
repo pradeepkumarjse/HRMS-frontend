@@ -8,8 +8,7 @@ import HeaderComponent from './components/HeaderComponent';
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 
-import ListQuestionsComponent from './components/ListQuestionsComponent';
-import CreateQuestionComponent from './components/CreateQuestionComponent';
+
 
 
 function App(){
