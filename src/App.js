@@ -8,8 +8,6 @@ import HeaderComponent from './components/HeaderComponent';
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 
-
-
 function App(){
     return(
 
@@ -20,9 +18,7 @@ function App(){
                         <div className="container">
                         <Switch>  
                 
-                           
- 
-
+                            <h1>this is app.js</h1>
                             <Route path="/employee" exact component={Showemployee} ></Route>
                             <Route path="/add-employee" component={CreateEmployeeComponent}></Route>
                             <Route path="/update-employee/:id" component={UpdateEmployeeComponent}></Route> 
