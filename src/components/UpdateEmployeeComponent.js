@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Employeeservice from '../service/Employeeservice';
+import Employeeservice from '../services/Employeeservice';
 
 class UpdateEmployeeComponent extends Component {
 
