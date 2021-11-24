@@ -7,15 +7,11 @@ import HeaderComponent from './components/HeaderComponent';
 //import FooterComponent from './components/FooterComponent';
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
-<<<<<<< HEAD
-=======
+
 import ListQuestionsComponent from './components/ListQuestionsComponent';
 import FooterComponent from './components/FooterComponent';
 import CreateQuestionComponent from './components/CreateQuestionComponent';
 import UpdateQuestionComponent from './components/UpdateQuestionComponent';
-
->>>>>>> a2d46205663014733b938abb11ec9f343bf7b687
-
 
 function App(){
     return(
