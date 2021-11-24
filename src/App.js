@@ -21,9 +21,11 @@ function App(){
                       
                         <div className="container">
                         <Switch>  
-                             
-                                  
                         <Route path="/" exact component={ListQuestionsComponent} ></Route>
+                            <Route path="/questions" component={ListQuestionsComponent}></Route>
+                            <Route path="/add-question/:id" component={CreateQuestionComponent}></Route> 
+                                  
+                            <Route path="/" exact component={ListQuestionsComponent} ></Route>
                             <Route path="/questions" component={ListQuestionsComponent}></Route>
                             <Route path="/add-question/:id" component={CreateQuestionComponent}></Route> 
                            
