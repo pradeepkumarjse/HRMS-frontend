@@ -16,9 +16,9 @@ class HeaderComponent extends Component {
         return (
             <div>
             <header>
-                <nav clasName="navbar navbar-expand-md navbar-dark bg-dark">
+                <nav className="navbar navbar-expand-md bg-primary">
                     <div>
-                       <a href="/" className="navbar-brand"> Question Console</a>
+                       <a href="/" className="navbar-brand text-white">Admin Dashboard</a>
                     </div>
 
                 </nav>
