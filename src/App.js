@@ -18,8 +18,7 @@ function App(){
                         <div className="container">
                         <Switch>  
                 
-                           
- 
+                
 
                             <Route path="/employee" exact component={Showemployee} ></Route>
                             <Route path="/add-employee" component={CreateEmployeeComponent}></Route>
