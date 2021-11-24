@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import Employeeservice from '../service/Employeeservice';
+import Employeeservice from '../services/Employeeservice';
 
 class showemployee extends Component {
 
