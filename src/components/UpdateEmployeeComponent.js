@@ -60,7 +60,7 @@ class UpdateEmployeeComponent extends Component {
 
         Employeeservice.updateEmployee(this.state.id,emp).then(res =>{
 
-            this.props.history.push('/');
+            this.props.history.push('/employee');
         });
 
     }
