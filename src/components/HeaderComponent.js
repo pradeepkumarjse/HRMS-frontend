@@ -17,8 +17,12 @@ class HeaderComponent extends Component {
             <div>
             <header>
                 <nav className="navbar navbar-expand-md bg-primary">
-                    <div>
+                    <div className="container-fluid">
                        <a href="/" className="navbar-brand text-white">Admin Dashboard</a>
+                       <div class="d-flex">
+                       <button class="btn btn-success">SignIn</button>
+                       <button class="btn btn-success ml-2">SignUp</button>
+                       </div>
                     </div>
 
                 </nav>
