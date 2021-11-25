@@ -19,14 +19,14 @@ function App(){
               <Router>    
                                  
                         <HeaderComponent />
-<<<<<<< HEAD
+
                          <div>
                            <Link to="/questions"><h3>Question crud</h3></Link>
                            <Link to="/employee"><h3>Employee</h3></Link>
                            <Link to="/start"><h3>Start assessment</h3></Link>
                         </div>
                         <div className="container">
-=======
+
                          <div className="row m-0">
                              <div className="col-md-2 mt-2">
                              <nav className="list-group">
@@ -41,7 +41,7 @@ function App(){
                              <div className="col-md-10">
 
                              <div className="container">
->>>>>>> 8383e965340f200e3d34e689538940d75bb625ff
+
                         <Switch>  
                         
                              <Route path="/startAssessment" component={ListQuestionsComponent}></Route>
@@ -57,11 +57,7 @@ function App(){
 
                         </Switch>  
                         
-                        </div>
-
-                             </div>
-                           
-                        </div>
+                       
                         
                      
                </Router>
