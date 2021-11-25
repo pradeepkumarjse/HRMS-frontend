@@ -73,7 +73,7 @@ class CreateQuestionComponent extends Component {
 
         // step 5
         if(this.state.id  === '_add'){
-         this.notify();
+       
          
           QuestionService.createQuestion(question).then(
             res=>{
