@@ -9,7 +9,10 @@ import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 import ListQuestionsComponent from './components/ListQuestionsComponent';
 import CreateQuestionComponent from './components/CreateQuestionComponent';
 import Assessment from './components/Assessment';
+
 import {useAuth0} from '@auth0/auth0-react';
+
+import User from './components/User';
 
 
 function App(){
@@ -65,7 +68,8 @@ function App(){
                             <Link to="/employee" className="btn list-group-item list-group-item-action ">
                             Employee</Link>
                             <Link to="/questions" className="btn list-group-item list-group-item-action ">Question</Link>
-                            <Link to="assessment" className="btn list-group-item list-group-item-action ">Start Accessment</Link>
+                            <Link to="user" className="btn list-group-item list-group-item-action ">Start Accessment</Link>
+                {/* <Link to="assessment" className="btn list-group-item list-group-item-action ">Start Accessment</Link> */}
                             </nav>
                              </div> 
                              <div className="col-md-10">
@@ -81,6 +85,7 @@ function App(){
                             <Route path="/add-employee" component={CreateEmployeeComponent}></Route>
                             <Route path="/update-employee/:id" component={UpdateEmployeeComponent}></Route> 
 
+                            <Route path="/user" exact component={User} ></Route>
                             <Route path="/assessment" exact component={Assessment} ></Route>
 
                         </Switch>  
