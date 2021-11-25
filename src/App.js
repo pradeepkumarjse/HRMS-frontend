@@ -25,11 +25,13 @@ function App(){
                          <div>
                            <Link to="/questions"><h3>Question crud</h3></Link>
                            <Link to="/employee"><h3>Employee</h3></Link>
+                           <Link to="/start"><h3>Start assessment</h3></Link>
                         </div>
                         <div className="container">
                         <Switch>  
                         
-                             
+                             <Route path="/startAssessment" component={ListQuestionsComponent}></Route>
+
                             <Route path="/questions" component={ListQuestionsComponent}></Route>
                             <Route path="/add-question/:id" component={CreateQuestionComponent}></Route> 
  
