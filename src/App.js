@@ -24,7 +24,9 @@ function App(){
                            <Link to="/questions"><h3>Question crud</h3></Link>
                            <Link to="/employee"><h3>Employee</h3></Link>
                            <Link to="/start"><h3>Start assessment</h3></Link>
+                       
                         </div>
+
                         <div className="container">
 
                          <div className="row m-0">
@@ -38,9 +40,8 @@ function App(){
                             <Link to="assessment" className="btn list-group-item list-group-item-action ">Start Accessment</Link>
                             </nav>
                              </div> 
-                             <div className="col-md-10">
-
-                             <div className="container">
+                            </div>
+                            </div> 
 
                         <Switch>  
                         
