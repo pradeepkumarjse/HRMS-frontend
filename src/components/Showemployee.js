@@ -89,8 +89,8 @@ class showemployee extends Component {
                         <td>
                        
          
-                        <button className="btn btn-success " onClick={()=>this.editEmployee(employee.e_id)}>Update</button>
-                        <button className="btn btn-danger" onClick={()=>this.deleteEmployee(employee.e_id)} style={{marginLeft:"10px"}}>Delete</button> 
+                        <button className="btn btn-success btn-sm " onClick={()=>this.editEmployee(employee.e_id)}>Update</button>
+                        <button className="btn btn-danger btn-sm" onClick={()=>this.deleteEmployee(employee.e_id)} style={{marginLeft:"2px"}}>Delete</button> 
                         </td>
                         </tr>
                     )
