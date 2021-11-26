@@ -23,12 +23,12 @@ function App(){
                          <div className="row m-0">
                              <div className="col-md-2 mt-2">
                              <nav className="list-group">
-                            <Link to="" className="btn  list-group-item list-group-item-action list-group-item-dark ">
+                            <Link to="" className="btn  list-group-item list-group-item-action list-group-item-dark " exact>
                             <i class="fa fa-user" aria-hidden="true"></i> Admin</Link> 
-                            <Link to="/employee" className="btn list-group-item list-group-item-action ">
+                            <Link to="/employee" className="btn list-group-item list-group-item-action " exact>
                             Employee</Link>
-                            <Link to="/questions" className="btn list-group-item list-group-item-action ">Question</Link>
-                            <Link to="user" className="btn list-group-item list-group-item-action ">Start Accessment</Link>
+                            <Link to="/questions" className="btn list-group-item list-group-item-action " exact>Question</Link>
+                            <Link to="user" className="btn list-group-item list-group-item-action " exact>Start Accessment</Link>
                 {/* <Link to="assessment" className="btn list-group-item list-group-item-action ">Start Accessment</Link> */}
                             </nav>
                              </div> 
@@ -38,7 +38,7 @@ function App(){
                         <Switch>  
                         
                              
-                            <Route path="/questions" component={ListQuestionsComponent}></Route>
+                            <Route path="/questions" component={ListQuestionsComponent} ></Route>
                             <Route path="/add-question/:id" component={CreateQuestionComponent}></Route> 
  
                             <Route path="/employee" exact component={Showemployee} ></Route>
