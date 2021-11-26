@@ -64,6 +64,9 @@ class UpdateEmployeeComponent extends Component {
         });
 
     }
+    cancel(){
+        this.props.history.push('/employee');
+      }
 
     changeName=(event)=>{
         this.setState({name:event.target.value});
@@ -175,7 +178,8 @@ class UpdateEmployeeComponent extends Component {
                                         </div>
 
                                         <button className="btn btn-success" onClick={this.updateEmployee}>Update</button>
-
+                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>cancel</button>
+ 
                                     </form>
                                     </div>
                             </div>
@@ -188,3 +192,5 @@ class UpdateEmployeeComponent extends Component {
 }
 
 export default UpdateEmployeeComponent;
+
+
