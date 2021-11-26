@@ -40,6 +40,7 @@ class CreateEmployeeComponent extends Component {
         let emp = {e_name:this.state.name,address:this.state.address,e_date:this.state.date,
         e_email:this.state.email,e_gender:this.state.gender,e_mobile:this.state.mobile,e_userid:this.state.userid,
         e_password:this.state.password};
+        
 
         console.log('emp =>' +JSON.stringify(emp));
 

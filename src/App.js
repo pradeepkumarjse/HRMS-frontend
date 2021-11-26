@@ -1,12 +1,15 @@
-import React from 'react';
+import React,{Component} from 'react';
 import './App.css';
 import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
-
+import CreateAdminComponent from './components/CreateAdminComponent';
 import Showemployee from './components/Showemployee';
 import HeaderComponent from './components/HeaderComponent';
 //import FooterComponent from './components/FooterComponent';
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
+import CreatetAdminComponent from './components/CreateAdminComponent';
+
+
 
 
 
@@ -26,7 +29,11 @@ function App(){
                         <div className="container">
                         <Switch>  
                         
-                        <Route path="/" exact component={ListQuestionsComponent} ></Route>
+                          <Route path = "/" component = {CreateAdminComponent}></Route>
+                     <Route path = "/employees" component = {CreateAdminComponent}></Route>
+                   <CreateAdminComponent/>
+                              
+                        {/* <Route path="/" exact component={ListQuestionsComponent} ></Route>
                             <Route path="/questions" component={ListQuestionsComponent}></Route>
                             <Route path="/add-question/:id" component={CreateQuestionComponent}></Route> 
  
@@ -34,7 +41,7 @@ function App(){
                            
                             <Route path="/employee" exact component={Showemployee} ></Route>
                             <Route path="/add-employee" component={CreateEmployeeComponent}></Route>
-                            <Route path="/update-employee/:id" component={UpdateEmployeeComponent}></Route> 
+                            <Route path="/update-employee/:id" component={UpdateEmployeeComponent}></Route>  */}
 
                         </Switch>  
                         
