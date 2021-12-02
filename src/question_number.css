@@ -1,0 +1,18 @@
+.button {
+    background-color: white;
+    border: 1px solid #04AA6D;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 7px;
+    border-radius: 50%;
+  }
+  .div-bg {
+    border: 2px solid gray;
+      background-color: aliceblue;
+      width: 22% !important;
+      margin-top: 30px !important;
+  }
