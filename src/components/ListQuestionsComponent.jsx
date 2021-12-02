@@ -11,6 +11,7 @@ class ListQuestionsComponent extends Component {
         this.state={
             questions:[]
         }
+        
 
         this.addQuestion=this.addQuestion.bind(this);
         this.editQuestion=this.editQuestion.bind(this);
@@ -44,14 +45,17 @@ class ListQuestionsComponent extends Component {
             }
         );
     }   
-
+    
     render() {
+        console.log(this.state.questions)
         return (
+            
             <div>
                 <h1 className="text-center">Questions</h1>
               
               <div>
                   <button  className="btn btn-primary" onClick={this.addQuestion}>Add Question</button>
+                  
               </div>
            
                 <div className="row mt-3">

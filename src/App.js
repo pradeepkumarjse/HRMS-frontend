@@ -20,6 +20,38 @@ function App(){
               <Router>    
                                  
                         <HeaderComponent />
+<<<<<<< HEAD
+=======
+
+
+
+{/*                       
+                          <li>
+                            <button onClick={loginWithPopup}>Login</button>
+                          </li>
+                          <li>
+                          */}
+                          <button  onClick={logout}>logout</button>
+
+                          
+                         
+                       <h3>user is :{isAuthenticated?"user is logged in":"user is not logged in"}</h3>
+                        {/* {
+                          isAuthenticated && (
+                          <pre style={{textAlign:'start'}}>       
+                             {JSON.stringify(user,null,2)}
+                          </pre>)
+                        }  */}
+
+
+
+
+
+
+
+
+
+>>>>>>> a8d644c2ef1612312894fd3174ba5ad07b7a6814
                          <div className="row m-0">
                              <div className="col-md-2 mt-2">
                              <nav className="list-group">
@@ -27,9 +59,11 @@ function App(){
                             <i class="fa fa-user" aria-hidden="true"></i> Admin</Link> 
                             <Link to="/employee" className="btn list-group-item list-group-item-action " exact>
                             Employee</Link>
-                            <Link to="/questions" className="btn list-group-item list-group-item-action " exact>Question</Link>
-                            <Link to="user" className="btn list-group-item list-group-item-action " exact>Start Accessment</Link>
-                {/* <Link to="assessment" className="btn list-group-item list-group-item-action ">Start Accessment</Link> */}
+
+                            <Link to="/questions" className="btn list-group-item list-group-item-action ">Question</Link>
+                            <Link to="user" className="btn list-group-item list-group-item-action ">Start Assessment</Link>
+
+                              {/* <Link to="assessment" className="btn list-group-item list-group-item-action ">Start Accessment</Link> */}
                             </nav>
                              </div> 
                              <div className="col-md-10">
