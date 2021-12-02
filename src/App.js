@@ -40,17 +40,18 @@ function App(){
                             <button onClick={loginWithPopup}>Login</button>
                           </li>
                           <li>
-                          <button onClick={logout}>logout</button>
+                          */}
+                          <button  onClick={logout}>logout</button>
 
-                          </li> */}
+                          
                          
-                        <h3>user is {isAuthenticated?"use is logged in":"user is not logged in"}</h3>
-                        {
+                       <h3>user is :{isAuthenticated?"user is logged in":"user is not logged in"}</h3>
+                        {/* {
                           isAuthenticated && (
                           <pre style={{textAlign:'start'}}>       
                              {JSON.stringify(user,null,2)}
                           </pre>)
-                        }
+                        }  */}
 
 
 
@@ -68,7 +69,7 @@ function App(){
                             <Link to="/employee" className="btn list-group-item list-group-item-action ">
                             Employee</Link>
                             <Link to="/questions" className="btn list-group-item list-group-item-action ">Question</Link>
-                            <Link to="user" className="btn list-group-item list-group-item-action ">Start Accessment</Link>
+                            <Link to="user" className="btn list-group-item list-group-item-action ">Start Assessment</Link>
                 {/* <Link to="assessment" className="btn list-group-item list-group-item-action ">Start Accessment</Link> */}
                             </nav>
                              </div> 
