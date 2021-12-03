@@ -19,7 +19,15 @@ class CreateEmployeeComponent extends Component {
              gender:'',
              mobile:'',
              userid:'',
-             password:''
+             password:'',
+             nameerror:'',
+             addresserror:'',
+             dateerror:'',
+             emailerror:'',
+             mobileerror:'',
+             useriderror:'',
+             passworderror:'',
+             
         }
 
         this.changeName=this.changeName.bind(this);
@@ -33,6 +41,54 @@ class CreateEmployeeComponent extends Component {
         this.saveEmployee=this.saveEmployee.bind(this);
     }
 
+    valid(){
+
+        if(this.state.name=='' && this.state.address=='' && this.state.date=='' 
+        && this.state.email=='' && this.state.mobile=='' && this.state.userid==''
+        && this.state.password=='' )
+        {
+            this.setState({nameerror:"text field not empty",addresserror:"address field not empty" ,dateerror:"date field not empty"
+            ,emailerror:"email field not empty" ,mobileerror:"mobile field not empty",useriderror:"userid field not empty"
+            ,passworderror:"password field not empty"})
+        }
+
+        else if(this.state.name=='')
+        {
+            this.setState({nameerror:"name field not empty"})
+        }
+
+       else if(this.state.address=='')
+        {
+            this.setState({addresserror:"address field not empty"})
+        }
+
+       else if(this.state.date=='')
+        {
+            this.setState({dateerror:"Date is required"})
+        }
+
+       else if(this.state.email=='')
+        {
+            this.setState({emailerror:"email is required"})
+        }
+       else if(this.state.mobile=='')
+        {
+            this.setState({mobileerror:"mobile no is required"})
+        }
+       else if(this.state.userid=='')
+        {
+            this.setState({useriderror:"userid is required"})
+        }
+       else if(this.state.password=='')
+        {
+            this.setState({passworderror:"password is required"})
+        }
+        else{
+            return true
+        }
+        
+    }
+
     saveEmployee=(e)=>{
 
         e.preventDefault();
@@ -43,11 +99,26 @@ class CreateEmployeeComponent extends Component {
 
         console.log('emp =>' +JSON.stringify(emp));
 
+
+
+        {
+            this.setState({nameerror:"",addresserror:"" ,dateerror:""
+            ,emailerror:"" ,mobileerror:"",useriderror:""
+            ,passworderror:""})
+        }
+
+
+        if(this.valid())
+        {
+            
+
         Employeeservice.createEmployee(emp).then(res =>{
 
             this.props.history.push('/employee');
 
         });
+
+         }
 
     }
 
@@ -110,6 +181,7 @@ class CreateEmployeeComponent extends Component {
                                             <input type="text" name="name" className="form-control"
                                             value={this.state.name} 
                                             onChange={this.changeName} />
+                                            <span style={{color:"red"}}>{this.state.nameerror}</span>
                                         </div>
 
                                         <div className="form-group">
@@ -117,6 +189,7 @@ class CreateEmployeeComponent extends Component {
                                             <input type="text" name="address" className="form-control"
                                             value={this.state.address} 
                                             onChange={this.changeAddress} />
+                                            <span style={{color:"red"}}>{this.state.addresserror}</span>
                                         </div>
 
                                         <div className="form-group">
@@ -124,6 +197,7 @@ class CreateEmployeeComponent extends Component {
                                             <input type="date" name="date" className="form-control"
                                             value={this.state.date} 
                                             onChange={this.changeDate} />
+                                             <span style={{color:"red"}}>{this.state.dateerror}</span>
                                         </div>
 
                                         <div className="form-group">
@@ -131,6 +205,7 @@ class CreateEmployeeComponent extends Component {
                                             <input type="email" name="email" className="form-control"
                                             value={this.state.email} 
                                             onChange={this.changeEmail} />
+                                            <span style={{color:"red"}}>{this.state.emailerror}</span>
                                         </div>
 
                                         <div className="form-group">
@@ -148,6 +223,7 @@ class CreateEmployeeComponent extends Component {
                                             <input type="text" name="mobile" className="form-control"
                                             value={this.state.mobile} 
                                             onChange={this.changeMobile} />
+                                            <span style={{color:"red"}}>{this.state.mobileerror}</span>
                                         </div>
 
                                         <div className="form-group">
@@ -155,6 +231,7 @@ class CreateEmployeeComponent extends Component {
                                             <input type="text" name="userid" className="form-control"
                                             value={this.state.userid} 
                                             onChange={this.changeUserid} />
+                                            <span style={{color:"red"}}>{this.state.useriderror}</span>
                                         </div>
 
                                         <div className="form-group">
@@ -162,6 +239,7 @@ class CreateEmployeeComponent extends Component {
                                             <input type="text" name="password" className="form-control"
                                             value={this.state.password} 
                                             onChange={this.changePassword} />
+                                            <span style={{color:"red"}}>{this.state.passworderror}</span>
                                         </div>
                                             
                                         <button className="btn btn-success" onClick={this.saveEmployee}>Save</button>

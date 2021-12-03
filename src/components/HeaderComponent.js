@@ -1,17 +1,18 @@
-import React from 'react';
-import {useAuth0} from '@auth0/auth0-react';
+import React, { Component } from 'react';
 
 
-function HeaderComponent(){
-    const {
+class HeaderComponent extends Component {
+     
+    constructor(props){
+        super(props)
 
-        loginWithPopup,
-        logout,
-        user,
-        isAuthenticated,
-      }=useAuth0();
-    
-        
+        this.state={
+
+        }
+
+    } 
+
+    render() {
         return (
             <div>
             <header>
@@ -21,7 +22,7 @@ function HeaderComponent(){
                        <a href="/" className="navbar-brand text-white">HRMS Dashboard</a>
                        
                        <div class="d-flex">
-                       <button class="btn btn-success" onClick={loginWithPopup}>SignIn</button>
+                       <button class="btn btn-success">SignIn</button>
                        <button class="btn btn-success ml-2">SignUp</button>
                        </div>
                     </div>
@@ -33,5 +34,6 @@ function HeaderComponent(){
             </div>
         );
     }
+}
 
 export default HeaderComponent;
