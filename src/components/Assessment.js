@@ -11,6 +11,9 @@ const Assessment = (props) => {
   const [questions, setQuestions] = useState([]);
   const [id, setId] = useState(0);
   const [id1,setId1]=useState(1);
+  const [radio,setRadio] =useState(true);
+
+  const [q1,setQ1]=useState([]);
  
 
   let location = useLocation();
@@ -43,7 +46,8 @@ const Assessment = (props) => {
     
 }
   
-  
+  console.log(questions.questions)
+  console.log(questions)
   return (
 
     <div>
@@ -57,20 +61,20 @@ const Assessment = (props) => {
           <div className=" mt-5">
         
           {/* {
-           questions.questions.map((q)=>(
+                   questions.questions.map((q)=>(
                       <div>                            
                        <div class="card-header">{q.question}</div> 
                        <div class="card-body">                        
-                       <input type="radio" name="options" id="option1" value={q.op1}  /> {q.op1}<br />
-                       <input type="radio" name="options" id="option2" value={q.op2} /> {q.op2} <br />
+                       <input type="radio" name={questions.questions?(questions.questions[id].choose):''} id="option1" value={q.op1}  /> {q.op1}<br />
+                       <input type="radio" name={questions.questions?(questions.questions[id].choose):''} id="option2" value={q.op2} /> {q.op2} <br />
                        <input type="radio" name="options" id="option3" value={q.op3}/> {q.op3} <br />
                        <input type="radio" name="options" id="option4" value={q.op4}/> {q.op4} <br />
                        
                         </div>
                         
                         </div>
-                    ))}  */}
-                   
+                    ))} 
+                    */}
 
                                       
 
@@ -116,43 +120,23 @@ const Assessment = (props) => {
     </div>
 
 
-            {            
+            {/* {            
                                
                                <div>
                                    
                               <div class="card-header">{ questions.questions?(questions.questions[id].question):''}</div> 
-                              <div class="card-body">
-                               
-                              <input type="radio" name={questions.questions?(questions.questions[id].op1):''} value="1" /> {questions.questions?(questions.questions[id].op1):''}<br />
-                              <input type="radio" name={questions.questions?(questions.questions[id].op1):''}  value="2" /> {questions.questions?(questions.questions[id].op2):''} <br />
-                              <input type="radio" name={questions.questions?(questions.questions[id].op1):''}  value="3"/> {questions.questions?(questions.questions[id].op3):''} <br />
-                              <input type="radio" name={questions.questions?(questions.questions[id].op1):''}  value="4"/> {questions.questions?(questions.questions[id].op4):''} <br />
+                              <div class="card-body" onChange={ (event)=>{ /*if(event.target.checked) {event.target.checked=false; console.log(event.target.checked)}}}>
+                              
+                              <input type="radio"   id="op1" name={questions.questions?(questions.questions[id].op1):''} value="1" checked onChange={(event)=>{}} /> {questions.questions?(questions.questions[id].op1):''}<br />
+                              <input type="radio"  id="op2" name={questions.questions?(questions.questions[id].op1):''}  value="2" checked onChange={(event)=>{} }/> {questions.questions?(questions.questions[id].op2):''} <br />
+                              <input type="radio" id="op3" name={questions.questions?(questions.questions[id].op1):''}  value="3" checked onChange={(event)=>{}} /> {questions.questions?(questions.questions[id].op3):''} <br />
+                              <input type="radio" id="op4" name={questions.questions?(questions.questions[id].op1):''}  value="4" checked onChange={(event)=>{}}/> {questions.questions?(questions.questions[id].op4):''} <br />
                               
                                </div>
                                
-                               </div>
-               }  
+                               </div>          }              */}
 
-     
-   
-            
-
-
-
-
-
-
-
-
-           
-
-
-
-
-
-            
-
-            <button className="btn btn-primary" onClick={() => { setId(id + 1); console.log(id) }}>Next</button>
+            <button className="btn btn-primary" onClick={() => { setId(id + 1);  console.log(id); }}>Next</button>
 
           </div>
 
