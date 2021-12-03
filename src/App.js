@@ -20,10 +20,6 @@ function App(){
               <Router>    
                                  
                         <HeaderComponent />
-<<<<<<< HEAD
-=======
-
-
 
 {/*                       
                           <li>
@@ -31,27 +27,19 @@ function App(){
                           </li>
                           <li>
                           */}
-                          <button  onClick={logout}>logout</button>
+                          {/* <button  onClick={logout}>logout</button>
 
                           
                          
                        <h3>user is :{isAuthenticated?"user is logged in":"user is not logged in"}</h3>
-                        {/* {
-                          isAuthenticated && (
+                        {/* { */}
+                          {/* isAuthenticated && (
                           <pre style={{textAlign:'start'}}>       
                              {JSON.stringify(user,null,2)}
                           </pre>)
-                        }  */}
+                        }  */} 
 
 
-
-
-
-
-
-
-
->>>>>>> a8d644c2ef1612312894fd3174ba5ad07b7a6814
                          <div className="row m-0">
                              <div className="col-md-2 mt-2">
                              <nav className="list-group">
