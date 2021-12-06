@@ -106,7 +106,12 @@ const Assessment = (props) => {
             }   */}
 
 
+
+
+            <div class="container-fluid" style={{marginTop:"20px"}}>
+
             <div class="container-fluid" style={{ marginTop: "20px" }}>
+
               <div class="row">
                 <div>
                   <button class="button" value="1" onClick={(e) => { updateProps(e) }}>01</button>
@@ -152,10 +157,19 @@ const Assessment = (props) => {
                                
                                </div>          }              */}
 
+
+
+            <button className="btn btn-primary" onClick={() => { setId(id + 1);  console.log(id); }}>Next</button>
+
+  
+            <button className="btn btn-primary" onClick={() => { setId(id + 1);  }}>Next</button>
+
+
             <button className="btn btn-primary" onClick={() => { setId(id + 1); console.log(id); }}>Next</button>
 
 
             <button className="btn btn-primary" onClick={() => { setId(id + 1); }}>Next</button>
+
 
           </div>
 
@@ -169,6 +183,7 @@ const Assessment = (props) => {
       </div>
 
 
+    </div>
     </div>
   );
 };

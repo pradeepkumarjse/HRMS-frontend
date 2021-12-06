@@ -4,8 +4,12 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 import Showemployee from './components/Showemployee';
 
-
 import HeaderComponent from './components/HeaderComponent';
+
+//import FooterComponent from './components/FooterComponent';
+      
+
+
 
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
@@ -23,12 +27,10 @@ function App() {
   return (
     <div>
 
-
-
       <Router>
 
 
-        {/*                       
+        {/*                          
                           <li>
                             <button onClick={loginWithPopup}>Login</button>
                           </li>
@@ -37,7 +39,7 @@ function App() {
         {/* <button  onClick={logout}>logout</button>
 
                           
-                         
+                          
                        <h3>user is :{isAuthenticated?"user is logged in":"user is not logged in"}</h3>
                         {/* { */}
         {/* isAuthenticated && (
@@ -56,7 +58,7 @@ function App() {
 
           <Route path="/employee" exact component={Showemployee} ></Route>
           <Route path="/add-employee" component={CreateEmployeeComponent}></Route>
-          <Route path="/update-employee/:id" component={UpdateEmployeeComponent}></Route>
+          <Route path="/upda te-employee/:id" component={UpdateEmployeeComponent}></Route>
 
           <Route path="/user" exact component={User} ></Route>
           <Route path="/assessment" exact component={Assessment} ></Route>
