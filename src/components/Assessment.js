@@ -106,7 +106,7 @@ const Assessment = (props) => {
             }   */}
 
 
-<<<<<<< HEAD
+
             <div class="container-fluid" style={{marginTop:"20px"}}>
               <div class="row">
           <div>
@@ -135,7 +135,7 @@ const Assessment = (props) => {
                                <div className="mt-3">
                                    
                               <div class="card-header">{ questions.questions?(questions.questions[id].question):''}</div> 
-<<<<<<< HEAD
+
                               <div class="card-body" onChange={ (event)=>{ /*if(event.target.checked) {event.target.checked=false; console.log(event.target.checked)}}}>
                               
                               <input type="radio"   id="op1" name={questions.questions?(questions.questions[id].op1):''} value="1" checked onChange={(event)=>{}} /> {questions.questions?(questions.questions[id].op1):''}<br />
@@ -155,12 +155,12 @@ const Assessment = (props) => {
                                
                                </div>          }              */}
 
-<<<<<<< HEAD
+
             <button className="btn btn-primary" onClick={() => { setId(id + 1);  console.log(id); }}>Next</button>
-=======
+
   
             <button className="btn btn-primary" onClick={() => { setId(id + 1);  }}>Next</button>
->>>>>>> 325f266cdc8b17c8587df310f9b9a91c196151b8
+
 
           </div>
 
