@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 class FooterComponent extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state={
+        this.state = {
 
         }
     }
@@ -13,7 +13,7 @@ class FooterComponent extends Component {
         return (
             <div>
                 <footer className="footer">
-                    <span>All Rights Reserved 2021 @JavaTeam </span>       
+                    <span>All Rights Reserved 2021 @JavaTeam </span>
                 </footer>
             </div>
         );
