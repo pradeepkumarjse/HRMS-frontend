@@ -2,29 +2,35 @@ import React, { Component } from 'react';
 
 
 class HeaderComponent extends Component {
-     
-    constructor(props){
+
+    constructor(props) {
         super(props)
 
-        this.state={
+        this.state = {
 
         }
 
-    } 
+    }
 
     render() {
         return (
             <div>
-            <header>
-                <nav clasName="navbar navbar-expand-md navbar-dark bg-dark">
-                    <div>
-                       <a href="/" className="navbar-brand"> Question Console</a>
-                    </div>
+                <header>
+                    <nav className="navbar navbar-expand-md bg-primary">
+                        <div className="container-fluid">
 
-                </nav>
+                            <a href="/" className="navbar-brand text-white">HRMS Dashboard</a>
 
-            </header>
-                
+                            <div class="d-flex">
+                                <button class="btn btn-success">SignIn</button>
+                                <button class="btn btn-success ml-2">SignUp</button>
+                            </div>
+                        </div>
+
+                    </nav>
+
+                </header>
+
             </div>
         );
     }
