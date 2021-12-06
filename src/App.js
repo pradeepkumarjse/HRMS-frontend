@@ -5,8 +5,12 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Showemployee from './components/Showemployee';
 
 import HeaderComponent from './components/HeaderComponent';
+
 //import FooterComponent from './components/FooterComponent';
       
+
+
+
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 
@@ -25,7 +29,6 @@ function App() {
 
       <Router>
 
-        <HeaderComponent />
 
         {/*                          
                           <li>
