@@ -88,8 +88,7 @@ export const Dashboard = (props) => {
                         <h4>Hello {data && `${data.firstName} ${data.lastName}`}</h4>
                         <br></br>
 
-
-                        {/* <Button style={{ marginTop: '5px' }} onClick={() => logOut()}>Logout</Button> */}
+                        <Button style={{ marginTop: '5px' }} onClick={() => logOut()}>Logout</Button>
                     </div>
 
                 </div>
