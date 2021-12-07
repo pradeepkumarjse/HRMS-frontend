@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 
 
-class HeaderComponent extends Component {
 
-    constructor(props) {
-        super(props)
+const HeaderComponent= (props)=> {
 
-        this.state = {
+    
+    const logOut = () => {
 
-        }
+        localStorage.clear();
+        props.history.push('/');
 
     }
 
-    render() {
+
+    
         return (
             <div>
                 <header>
@@ -22,8 +23,8 @@ class HeaderComponent extends Component {
                             <a href="/" className="navbar-brand text-white">HRMS Dashboard</a>
 
                             <div class="d-flex">
-                                <button class="btn btn-success">SignIn</button>
-                                <button class="btn btn-success ml-2">SignUp</button>
+                               
+                                <button class="btn btn-success ml-2"  onClick={() => logOut()}>Logout</button>
                             </div>
                         </div>
 
@@ -33,7 +34,7 @@ class HeaderComponent extends Component {
 
             </div>
         );
-    }
+  
 }
 
 export default HeaderComponent;

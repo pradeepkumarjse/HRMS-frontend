@@ -46,7 +46,7 @@ export const Dashboard = (props) => {
 
 
     return (
-        <Container>
+       <div>
             {/* <MainWrapper> */}
 
 
@@ -67,15 +67,9 @@ export const Dashboard = (props) => {
                              {JSON.stringify(user,null,2)}
                           </pre>)
                         }  */}
+                  
 
-
-
-
-
-
-                        
-
-
+                  <HeaderComponent />
 
             <div className="row m-0">
                 <div className="col-md-2 mt-2">
@@ -97,13 +91,13 @@ export const Dashboard = (props) => {
                         <br></br>
 
 
-                        <Button style={{ marginTop: '5px' }} onClick={() => logOut()}>Logout</Button>
+                        {/* <Button style={{ marginTop: '5px' }} onClick={() => logOut()}>Logout</Button> */}
                     </div>
 
                 </div>
 
             </div>
             {/* </MainWrapper> */}
-        </Container>
+            </div>
     )
 }
