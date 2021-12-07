@@ -8,9 +8,6 @@ import HeaderComponent from './components/HeaderComponent';
 
 //import FooterComponent from './components/FooterComponent';
       
-
-
-
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 
@@ -26,6 +23,8 @@ import { Dashboard } from './components/dashboard/dashboard';
 function App() {
   return (
     <div>
+
+      <HeaderComponent />
 
       <Router>
 
