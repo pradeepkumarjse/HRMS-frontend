@@ -69,8 +69,6 @@ export const Dashboard = (props) => {
                         }  */}
                   
 
-                  <HeaderComponent />
-
             <div className="row m-0">
                 <div className="col-md-2 mt-2">
                     <nav className="list-group">
