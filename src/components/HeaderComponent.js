@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 
 
 
 const HeaderComponent= (props)=> {
 
     
-    const logOut = () => {
+//   const  logOut=(e)=>{
+//       localStorage.clear();
+//       props.history.push("/");
 
-        localStorage.clear();
-        props.history.push('/');
-
-    }
-
+//     }
 
     
         return (
@@ -22,10 +20,10 @@ const HeaderComponent= (props)=> {
 
                             <a href="/" className="navbar-brand text-white">HRMS Dashboard</a>
 
-                            <div class="d-flex">
+                            {/* <div class="d-flex">
                                
-                                <button class="btn btn-success ml-2"  onClick={() => logOut()}>Logout</button>
-                            </div>
+                                <button class="btn btn-success ml-2"  onClick={logOut}>Logout</button>
+                            </div> */}
                         </div>
 
                     </nav>

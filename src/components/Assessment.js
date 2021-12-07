@@ -98,7 +98,7 @@ const  quit=(e)=>{
 
             {            
                                
-                            <div>
+                            <div >
                                 
                            <div class="card-header">{ questions.questions?(questions.questions[id].question):''}</div> 
                            <div class="card-body">
@@ -143,12 +143,11 @@ const  quit=(e)=>{
                                
                                </div>          }              */}
 
-            
+            <div className="mt-5">
             <button className="btn " onClick={() => { setId(id - 1);  console.log(id); }} style={{backgroundColor:"#0dcaf0"}}>Previous</button>
             <button className="btn " onClick={() => { setId(id + 1);  console.log(id); }} style={{marginLeft:"200px",backgroundColor:"#0dcaf0"}}>Next</button>
             <button className="btn " onClick={() => { setId(id + 1);  console.log(id); }} style={{float:"right" ,backgroundColor:"#0dcaf0"}} onClick={quit}>Quit</button>
-           
-          
+            </div>
           {/* <div className="container mt-3 mb-3 text-center">
 
             <a href="/" class="btn btn-info ">Submit Test</a>
