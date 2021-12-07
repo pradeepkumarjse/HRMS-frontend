@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { authenticate, authFailure, authSuccess } from '../redux/authActions';
-import './loginpage.css';
+import '../css/loginpage.css';
 import { userLogin } from '../api/authenticationService';
 import { Alert, Spinner } from 'react-bootstrap';
 

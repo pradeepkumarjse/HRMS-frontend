@@ -4,6 +4,8 @@ import QuizService from "../services/QuizService";
 
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Assessment from "./Assessment";
+import HeaderComponent from '../components/HeaderComponent';
+
 // let user=''
 const User = (props) => {
 
@@ -43,28 +45,19 @@ const User = (props) => {
 
     return (
 
+        
         <div>
+              <HeaderComponent/>
 
 
-
-            <div className="col-md-6 offset-3 mt-5" >
-
-                {/* <form> */}
+            <div className=" container col-md-6 offset-3 mt-5" >           
 
 
                 <div class="form-group">
                     <label class="username">Enter Username</label>
                     <input type="text" class="form-control" onChange={onChangeHandler.bind(this, setUsername)} id="username" aria-describedby="emailHelp" placeholder="Enter User Name" name="username" />
                 </div>
-
-
-
-                {/* <button type="submit" className="btn btn-primary" >Start Test</button> */}
-
-
-
-
-                {/* </form> */}
+                
                 <Link to={{ pathname: '/assessment', state: username }} className="btn btn-primary " >Start Test</Link>
 
             </div>
