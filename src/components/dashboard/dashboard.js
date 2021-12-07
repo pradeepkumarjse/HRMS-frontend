@@ -91,7 +91,7 @@ export const Dashboard = (props) => {
                         <br></br>
 
 
-                        {/* <Button style={{ marginTop: '5px' }} onClick={() => logOut()}>Logout</Button> */}
+                        <Button style={{ marginTop: '5px' }} onClick={logOut}>Logout</Button>
                     </div>
 
                 </div>

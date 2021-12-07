@@ -1,10 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { fetchUserData } from '../api/authenticationService';
 
 
 
-const HeaderComponent= (props)=> {
 
-    
+const HeaderComponent = (props)=> {
+    const [userData, setData] = useState({});
+
+    React.useEffect(() => {
+        fetchUserData().then((response) => {
+            setData(response.data);
+        }).catch((e) => {
+            localStorage.clear();
+            props.history.push('/');
+        })
+    }, [])
+
     const logOut = () => {
 
         localStorage.clear();
@@ -24,7 +35,7 @@ const HeaderComponent= (props)=> {
 
                             <div class="d-flex">
                                
-                                <button class="btn btn-success ml-2"  onClick={() => logOut()}>Logout</button>
+                                <button class="btn btn-success ml-2"  onClick={logOut}>Logout</button>
                             </div>
                         </div>
 

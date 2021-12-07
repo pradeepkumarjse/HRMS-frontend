@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import QuizService from "../services/QuizService";
-
+import { fetchUserData } from '../api/authenticationService';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Assessment from "./Assessment";
 import HeaderComponent from '../components/HeaderComponent';
@@ -10,12 +10,17 @@ import HeaderComponent from '../components/HeaderComponent';
 const User = (props) => {
 
     const [username, setUsername] = useState('');
+    const [userData, setData] = useState({});
 
 
-    useEffect(() => {
-
+    React.useEffect(() => {
+        fetchUserData().then((response) => {
+            setData(response.data);
+        }).catch((e) => {
+            localStorage.clear();
+            props.history.push('/');
+        })
     }, [])
-
 
 
 

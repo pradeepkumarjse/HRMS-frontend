@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { fetchUserData } from '../api/authenticationService';
+
 
 import axios from "axios";
 import { useLocation } from "react-router";
 import QuizService from "../services/QuizService";
 import CountDownTimer from "./CountDownTimer ";
 import HeaderComponent from '../components/HeaderComponent';
+
 
 
 
@@ -18,12 +21,21 @@ const Assessment = (props) => {
   const [radio, setRadio] = useState(true);
 
   const [q1, setQ1] = useState([]);
+  const [userData, setData] = useState({});
+
 
 
   let location = useLocation();
 
   useEffect(() => {
+
     getQuizQuestions();
+    fetchUserData().then((response) => {
+      setData(response.data);
+  }).catch((e) => {
+      localStorage.clear();
+      props.history.push('/');
+  })
 
 
   }, [])
@@ -166,10 +178,10 @@ const Assessment = (props) => {
 
 
           <br/>
-          <button className="btn btn-info" onClick={() => { setId(id + 1); }} >Next</button>
           <button className="btn btn-secondary" onClick={() => { setId(id -1 );}}  >Previous</button>
 
-          <button className="btn btn-info" onClick={() => { setId(id + 1);  console.log(id); }}>Next</button>
+          <button className="btn btn-info" onClick={() => { setId(id + 1); }} >Next</button>
+
 
           <button className="btn btn-danger" onClick={()=>{}}>Quit</button>
 

@@ -3,14 +3,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import QuestionService from '../services/QuestionService';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { fetchUserData } from '../api/authenticationService';
+
 
 class ListQuestionsComponent extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            questions: []
+            questions: [],
+            userdate:[]
         }
+        
 
 
         this.addQuestion = this.addQuestion.bind(this);
@@ -39,6 +43,12 @@ class ListQuestionsComponent extends Component {
     }
 
     componentDidMount() {
+        fetchUserData().then((response) => {
+            this.setState({userdate:response.data});
+        }).catch((e) => {
+            localStorage.clear();
+            this.props.history.push('/');
+        })
         QuestionService.getQuestions().then(
             (res) => {
                 this.setState({ questions: res.data });
