@@ -237,16 +237,25 @@ console.log(ans)
                                </div>          }              */}
 
             <div className="mt-5">
-            <button className="btn " onClick={() => { setId(id - 1);  console.log(id); }} style={{backgroundColor:"#0dcaf0"}}>Previous</button>
-            <button className="btn " onClick={updateQuestion} style={{marginLeft:"200px",backgroundColor:"#0dcaf0"}}>Save & Next</button>
-            <button className="btn " onClick={quit} style={{float:"right" ,backgroundColor:"#0dcaf0"}} >Quit</button>
-            </div>
-         
-         
-         
+            {(id==0)
+        ?<> <button className="btn " onClick={updateQuestion} style={{marginLeft:"200px",backgroundColor:"#0dcaf0"}}>Save & Next</button>
+        <button className="btn " onClick={quit} style={{float:"right" ,backgroundColor:"#0dcaf0"}} >Quit</button>
+        
+        </>
+        :  <> 
+        <button className="btn " onClick={() => { setId(id - 1);  console.log(id); }} style={{backgroundColor:"#0dcaf0"}}>Previous</button>
+        <button className="btn " onClick={updateQuestion} style={{marginLeft:"200px",backgroundColor:"#0dcaf0"}}>Save & Next</button>
+        <button className="btn " onClick={quit} style={{float:"right" ,backgroundColor:"#0dcaf0"}} >Quit</button>
+        
+        </>
+      }
+      </div>
+            
           <div className="container mt-3 mb-3 text-center">
-
-            <a href="/" class="btn btn-info " onClick={submitQuiz}>Submit Test</a>
+            {(id==7)? <a href="/" class="btn btn-info " onClick={submitQuiz}>Submit Test</a>
+            :''
+            }
+           
           </div>
 
         </div>
