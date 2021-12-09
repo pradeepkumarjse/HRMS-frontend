@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ADMIN_API_BASE_URL = "http://localhost:8088/Admin-module/api/v1/"
+const ADMIN_API_BASE_URL = "http://localhost:8086/api/v1/admin";
 
 class AdminService{
 
@@ -13,15 +13,15 @@ class AdminService{
     createAdmin(admin){
         return axios.post(ADMIN_API_BASE_URL,admin)
     }
-    getAdmin(admin){
-        return axios.get(ADMIN_API_BASE_URL+'/'+admin);
+    getAdminById(id){
+        return axios.get(ADMIN_API_BASE_URL+'/'+id);
     }
-    deleteAdmin(admin){
-        return axios.delete(ADMIN_API_BASE_URL+'/'+admin);
+    deleteAdmin(id){
+        return axios.delete(ADMIN_API_BASE_URL+'/'+id);
     }
-    updateAdmin(admin){
-        return axios.put(ADMIN_API_BASE_URL+'/'+admin);
+    updateAdmin(e_id,admin){
+        return axios.put(ADMIN_API_BASE_URL+'/'+e_id,admin);
     }
 }
 
-export default new AdminService()
+export default new AdminService();

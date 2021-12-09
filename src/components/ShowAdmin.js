@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import Adminservice from '../service/Adminservice';
+import Adminservice from '../services/AdminService';
 
-class showAdmin extends Component {
+class ShowAdmin extends Component {
 
     constructor(props){
         super(props)
 
         this.state={
-             admin:[]   
+             admin:[]      
         }
 
         // this.addAdmin=this.addAdmin.bind(this);
@@ -20,7 +20,9 @@ class showAdmin extends Component {
     componentDidMount(){
 
         Adminservice.getAdmin().then((res)=>{
+            
             this.setState({admin:res.data});
+        
         });
     }
 
@@ -56,13 +58,16 @@ class showAdmin extends Component {
                  <tr>
                     
                     {/* <th>Id</th> */}
-                                <th>Admin Id</th>
+                    <th>Admin Id</th>
                                 <th>Admin Name</th>
                                 <th>Admin Email</th>
+                                <th>Date</th>
                                 <th>Gender</th>
                                 <th>Mobile</th>
-                                <th>Username </th>
-                                <th>Password </th>        
+                                <th>Userid</th>
+                                <th>Password </th>
+                                <th>city</th>  
+                                    
                      <th className="text-center">Action</th>
 
                  </tr>
@@ -76,19 +81,21 @@ class showAdmin extends Component {
                         admin =>
                         <tr key={admin.e_id}>
 
-                        {/* <td>{admin.e_id}</td>  */}
-                        <td>{admin.e_AdminId}</td>
-                        <td>{admin.AdminName}</td>
-                        <td>{admin.e_Adminemail}</td>
-                        <td>{admin.e_Gender}</td>
-                        <td>{admin.e_Mobile}</td>
-                        <td>{admin.e_Username}</td>
-                        <td>{admin.e_Password}</td>
+                        {/* <td>{admin.id}</td>  */}
+                        <td>{admin.e_id}</td>
+                        <td>{admin.e_name}</td>
+                        <td>{admin.e_email}</td>
+                        <td>{admin.e_date}</td>
+                        <td>{admin.e_gender}</td>
+                        <td>{admin.e_mobile}</td>
+                        <td>{admin.e_userid}</td>
+                        <td>{admin.e_password}</td>
+                        <td>{admin.e_city}</td>
                         <td>
                        
          
                         <button className="btn btn-success " onClick={()=>this.editAdmin(admin.e_id)}>Update</button>
-                        <button className="btn btn-danger" onClick={()=>this.deleteAdmin(admin.e_id)} style={{marginLeft:"10px"}}>Delete</button> 
+                        <button className="btn btn-danger" onClick={()=>this.deleteAdmin(admin.e_id)} style={{marginLeft:"2px"}}>Delete</button> 
                         </td>
                         </tr>
                     )
@@ -102,4 +109,4 @@ class showAdmin extends Component {
     }
 }
 
-export default showAdmin;
+export default ShowAdmin;

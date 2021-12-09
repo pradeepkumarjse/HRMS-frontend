@@ -13,19 +13,24 @@ class CreateAdminComponent extends Component {
             AdminId:'',
             AdminName:'',
             Adminemail:'',
+            Date:'',
              Gender:'',
              Mobile:'',
-             Username:'',
-             Password:''
+             Userid:'',
+             Password:'',
+             City:''
+             
         }
 
         this.changeAdminId=this.changeAdminId.bind(this);
         this.changeAdminName=this.changeAdminName.bind(this);
         this.changeAdminemail=this.changeAdminemail.bind(this);
+        this.changeDate=this.changeDate.bind(this);
         this.changeGender=this.changeGender.bind(this);
         this.changeMobile=this.changeMobile.bind(this);
-        this.changeUsername=this.changeUsername.bind(this);
+        this.changeUserid=this.changeUserid.bind(this);
         this.changePassword=this.changePassword.bind(this);
+        this.changeCity=this.changeCity.bind(this);
         this.saveAdmin=this.saveAdmin.bind(this);
     }
 
@@ -33,13 +38,11 @@ class CreateAdminComponent extends Component {
 
         e.preventDefault();
 
-        let admin = {e_AdminId:this.state.AdminId,
-                  e_Adminname:this.state.Adminname,
-        e_Adminemail:this.state.Adminemail,
-        e_gender:this.state.Gender,
-        e_mobile:this.state.Mobile,
-        e_username:this.state.Username,
-        e_password:this.state.Password};
+        let admin = {e_name:this.state.AdminName,
+        e_email:this.state.Adminemail,e_date:this.state.Date,
+        e_gender:this.state.Gender, e_mobile:this.state.Mobile,
+       e_userid:this.state.Userid, e_password:this.state.Password,
+        e_City:this.state.City};
 
         console.log('admin =>' +JSON.stringify(admin));
 
@@ -50,6 +53,10 @@ class CreateAdminComponent extends Component {
         });
 
     }
+
+    cancel(){
+        this.props.history.push('/admin');
+      }
 
     changeAdminId=(event)=>{
         this.setState({AdminId:event.target.value});
@@ -63,21 +70,31 @@ class CreateAdminComponent extends Component {
         this.setState({Adminemail:event.target.value});
     }
 
+    changeDate=(event)=>{
+        this.setState({Date:event.target.value});
+
+    }
 
     changeGender=(event)=>{
-        this.setState({gender:event.target.value});
+        this.setState({Gender:event.target.value});
     }
 
     changeMobile=(event)=>{
-        this.setState({mobile:event.target.value});
+        this.setState({Mobile:event.target.value});
     }
 
-    changeUsername=(event)=>{
-        this.setState({username:event.target.value});
+    changeUserid=(event)=>{
+        this.setState({Userid:event.target.value});
     }
 
     changePassword=(event)=>{
-        this.setState({password:event.target.value});
+        this.setState({Password:event.target.value});
+
+    }
+
+        changeCity=(event)=>{
+            this.setState({City:event.target.value});
+
     }
 
 
@@ -98,12 +115,7 @@ class CreateAdminComponent extends Component {
                                     <div className="card-body">
 
                                     <form>
-                                        <div className="form-group">
-                                            <label>AdminId</label>
-                                            <input type="text" name="AdminId" className="form-control"
-                                            value={this.state.AdminId} 
-                                            onChange={this.changeAdminId} />
-                                        </div>
+                                        
 
                                         <div className="form-group">
                                             <label>AdminName</label>
@@ -120,6 +132,12 @@ class CreateAdminComponent extends Component {
                                         </div>
 
                                       
+                                        <div className="form-group">
+                                            <label>Date</label>
+                                            <input type="date" name="date" className="form-control"
+                                            value={this.state.Date} 
+                                            onChange={this.changeDate} />
+                                        </div>
 
                                         <div className="form-group">
                                             <label>Gender: </label>
@@ -139,10 +157,10 @@ class CreateAdminComponent extends Component {
                                         </div>
 
                                         <div className="form-group">
-                                            <label>Username</label>
-                                            <input type="text" name="username" className="form-control"
-                                            value={this.state.Username} 
-                                            onChange={this.changeUsername} />
+                                            <label>Userid</label>
+                                            <input type="text" name="userid" className="form-control"
+                                            value={this.state.Userid} 
+                                            onChange={this.changeUserid} />
                                         </div>
 
                                         <div className="form-group">
@@ -151,9 +169,22 @@ class CreateAdminComponent extends Component {
                                             value={this.state.Password} 
                                             onChange={this.changePassword} />
                                         </div>
+
+
+                                        <div className="form-group">
+                                            <label>City</label>
+                                            <input type="text" name="City" className="form-control"
+                                            value={this.state.City} 
+                                            onChange={this.changeCity} />
+                                        </div>
+
+
+                                    
+
                                             
                                         <button className="btn btn-success" onClick={this.saveAdmin}>Save</button>
-                                                  
+                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>cancel</button>
+                   
                                     </form>
                                     </div>
                             </div>

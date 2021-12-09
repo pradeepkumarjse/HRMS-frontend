@@ -1,19 +1,20 @@
-import React,{Component} from 'react';
+import React from 'react';
 import './App.css';
-
-import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
-import CreateAdminComponent from './components/CreateAdminComponent';
 import { BrowserRouter as Router,Link,Route,Switch } from 'react-router-dom';
 
 import Showemployee from './components/Showemployee';
+import ShowAdmin from './components/ShowAdmin';
 import HeaderComponent from './components/HeaderComponent';
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
-import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
-
 import CreatetAdminComponent from './components/CreateAdminComponent';
+import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
+import UpdateAdminComponent from './components/UpdateAdminComponent';
 import ListQuestionsComponent from './components/ListQuestionsComponent';
 import CreateQuestionComponent from './components/CreateQuestionComponent';
 import Assessment from './components/Assessment';
+
+
+
 
 import {useAuth0} from '@auth0/auth0-react';
 
@@ -46,11 +47,10 @@ function App(){
                           </li>
                           <li>
                           <button onClick={logout}>logout</button>
-
                           </li> */}
                          
-                        {/* <h3>user is {isAuthenticated?"use is logged in":"user is not logged in"}</h3>
-                        {
+                        <h3>user is {isAuthenticated?"use is logged in":"user is not logged in"}</h3>
+                        {/* {
                           isAuthenticated && (
                           <pre style={{textAlign:'start'}}>       
                              {JSON.stringify(user,null,2)}
@@ -68,8 +68,8 @@ function App(){
                          <div className="row m-0">
                              <div className="col-md-2 mt-2">
                              <nav className="list-group">
-                            <Link to="" className="btn  list-group-item list-group-item-action list-group-item-dark ">
-                            <i class="fa fa-user" aria-hidden="true"></i> Admin</Link> 
+                            <Link to="/admin" className="btn  list-group-item list-group-item-action ">
+                             Admin</Link> 
                             <Link to="/employee" className="btn list-group-item list-group-item-action ">
                             Employee</Link>
                             <Link to="/questions" className="btn list-group-item list-group-item-action ">Question</Link>
@@ -81,20 +81,18 @@ function App(){
 
                              <div className="container">
                         <Switch>  
-                        
+                           
+                                <Route path="/admin" exact component={ShowAdmin}></Route>
+                            <Route path="/add-admin" component={CreatetAdminComponent}></Route> 
+                            <Route path="/update-admin/:id" component={UpdateAdminComponent}></Route> 
 
-                          <Route path = "/" component = {CreateAdminComponent}></Route>
-                     <Route path = "/employees" component = {CreateAdminComponent}></Route>
-                   <CreateAdminComponent/>
-                              
-                        {/* <Route path="/" exact component={ListQuestionsComponent} ></Route>
-
+                             
                             <Route path="/questions" component={ListQuestionsComponent}></Route>
                             <Route path="/add-question/:id" component={CreateQuestionComponent}></Route> 
  
                             <Route path="/employee" exact component={Showemployee} ></Route>
                             <Route path="/add-employee" component={CreateEmployeeComponent}></Route>
-                            <Route path="/update-employee/:id" component={UpdateEmployeeComponent}></Route>  */}
+                            <Route path="/update-employee/:id" component={UpdateEmployeeComponent}></Route> 
 
                             <Route path="/user" exact component={User} ></Route>
                             <Route path="/assessment" exact component={Assessment} ></Route>
