@@ -50,20 +50,27 @@ const User = (props) => {
 
     return (
 
-        
         <div>
+       
               <HeaderComponent/>
+           
+           <div className="main-container container py-5 px-4">
+
+            <div className="card  py-5 px-4" >           
 
 
-            <div className=" container col-md-6 offset-3 mt-5" >           
-
-
-                <div class="form-group">
+                <div className="">
                     <label class="username">Enter Username</label>
-                    <input type="text" class="form-control" onChange={onChangeHandler.bind(this, setUsername)} id="username" aria-describedby="emailHelp" placeholder="Enter User Name" name="username" />
+                    <input type="text" className="form-control mb-2 mt-2" onChange={onChangeHandler.bind(this, setUsername)} id="username" aria-describedby="emailHelp" placeholder="Enter Username" name="username" />
+
                 </div>
+                <Link to={{ pathname: '/assessment', state: username }} className="btn btn-info" >Start Test</Link>
+
                 
-                <Link to={{ pathname: '/assessment', state: username }} className="btn btn-primary " >Start Test</Link>
+                
+          </div> 
+
+
 
             </div>
 

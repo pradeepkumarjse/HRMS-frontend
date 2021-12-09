@@ -4,6 +4,7 @@ import QuestionService from '../services/QuestionService';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { fetchUserData } from '../api/authenticationService';
+import HeaderComponent from './HeaderComponent';
 
 
 class ListQuestionsComponent extends Component {
@@ -61,6 +62,7 @@ class ListQuestionsComponent extends Component {
         return (
 
             <div>
+            <HeaderComponent/>
                 <h1 className="text-center">Questions</h1>
 
                 <div>

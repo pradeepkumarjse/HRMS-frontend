@@ -28,7 +28,7 @@ export const Dashboard = (props) => {
     }, [])
 
     const logOut = () => {
-
+        console.log(data);
         localStorage.clear();
         props.history.push('/');
 
@@ -50,7 +50,7 @@ export const Dashboard = (props) => {
             {/* <MainWrapper> */}
 
 
-
+<HeaderComponent/>
 
             {/*                       
                           <li>
@@ -69,8 +69,6 @@ export const Dashboard = (props) => {
                         }  */}
                   
 
-                  <HeaderComponent />
-
             <div className="row m-0">
                 <div className="col-md-2 mt-2">
                     <nav className="list-group">
@@ -87,11 +85,9 @@ export const Dashboard = (props) => {
 
                     <div className="container">
 
-                        <h4>Hello {data && `${data.firstName} ${data.lastName}`}</h4>
-                        <br></br>
 
-
-                        <Button style={{ marginTop: '5px' }} onClick={logOut}>Logout</Button>
+                    <h4>Hello, {data && `${data.firstName} ${data.lastName}`}</h4>
+                <br></br>
                     </div>
 
                 </div>

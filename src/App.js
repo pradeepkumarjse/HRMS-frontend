@@ -8,9 +8,6 @@ import HeaderComponent from './components/HeaderComponent';
 
 //import FooterComponent from './components/FooterComponent';
       
-
-
-
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 
@@ -28,9 +25,6 @@ function App() {
     <div>
 
 
-
-    
-
       <Router>
 
 
@@ -41,7 +35,6 @@ function App() {
                           <li>
                           */}
         {/* <button  onClick={logout}>logout</button>
-
                           
                           
                        <h3>user is :{isAuthenticated?"user is logged in":"user is not logged in"}</h3>

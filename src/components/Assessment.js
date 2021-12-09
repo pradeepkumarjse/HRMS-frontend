@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { fetchUserData } from '../api/authenticationService';
-
 
 import axios from "axios";
 import { useLocation } from "react-router";
 import QuizService from "../services/QuizService";
 import CountDownTimer from "./CountDownTimer ";
-import HeaderComponent from '../components/HeaderComponent';
-
+import { fetchUserData } from '../api/authenticationService';
+import HeaderComponent from "./HeaderComponent";
 
 
 
@@ -16,33 +14,26 @@ const Assessment = (props) => {
   const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
 
   const [questions, setQuestions] = useState([]);
-  const [id, setId] = useState(0);
-  const [id1, setId1] = useState(1);
-  const [radio, setRadio] = useState(true);
-
-  const [q1, setQ1] = useState([]);
+ 
   const [userData, setData] = useState({});
 
+ 
+   
 
 
   let location = useLocation();
 
   useEffect(() => {
 
-    getQuizQuestions();
     fetchUserData().then((response) => {
       setData(response.data);
-  }).catch((e) => {
+    }).catch((e) => {
       localStorage.clear();
       props.history.push('/');
-  })
-
-
-  }, [])
-
-  const getQuizQuestions = () => {
+    })
     QuizService.getAllQuiz(location.state).then((response) => {
-      setQuestions(response.data);
+      console.log(response.data);
+       setQuestions(response.data);
 
     },
       (error) => {
@@ -50,90 +41,100 @@ const Assessment = (props) => {
 
       }
     )
+
+  }, [1])
+
+  const getQuizQuestions = () => {
+    // QuizService.getAllQuiz(location.state).then((response) => {
+    //   console.log(response.data);
+    //   setQuestions(response.data);
+
+    // },
+    //   (error) => {
+    //     console.log(error);
+
+    //   }
+    
   }
 
-  function updateProps(e) {
-    if (e.target) {
-      setId1(e.target.value);
-      return;
-    }
-    setId1(e);
 
+  
+
+  const quit = (e) => {  
+
+    localStorage.clear();
+    
+    props.history.push("/");
   }
+  
 
-  console.log(questions.questions)
-  console.log(questions)
+  // console.log(Object.keys(questions))
   return (
 
 
 
     <div>
-    <HeaderComponent />
-
-
-      
-
-      
-      
-
-      <div className="container row">
+      <HeaderComponent />
 
       Welcome, {location.state}
 
-      <div className="text-right " style={{ color: "red", fontSize: "30px" }} >
+      <div className="" style={{ color: "red", fontSize: "30px" }} >
         <CountDownTimer hoursMinSecs={hoursMinSecs} />
       </div>
-        <div className=" container col-md-6 offset-2">
-          <div className=" mt-5">
-
-            {/* {
-                   questions.questions.map((q)=>(
-                      <div>                            
-                       <div class="card-header">{q.question}</div> 
-                       <div class="card-body">                        
-                       <input type="radio" name={questions.questions?(questions.questions[id].choose):''} id="option1" value={q.op1}  /> {q.op1}<br />
-                       <input type="radio" name={questions.questions?(questions.questions[id].choose):''} id="option2" value={q.op2} /> {q.op2} <br />
-                       <input type="radio" name="options" id="option3" value={q.op3}/> {q.op3} <br />
-                       <input type="radio" name="options" id="option4" value={q.op4}/> {q.op4} <br />
-                       
-                        </div>
-                        
-                        </div>
-                    ))} 
-                    */}
 
 
-<div class="container-fluid">
+      <div className="row">
+        <div className="col-md-6 offset-3">
+          <div className=" mt-4">
+          {
+            <div>
 
-  <div class="row">
-    <div>
-      <button class="button" value="1" onClick={(e) => { updateProps(e) }}>01</button>
-      <button class="button button3" value="2" onClick={(e) => { updateProps(e) }}>02</button>
-      <button class="button button3" value="3" onClick={(e) => { updateProps(e) }}>03</button>
-      <button class="button button4" value="4" onClick={(e) => { updateProps(e) }}>04</button>
-      <button class="button button5" value="5" onClick={(e) => { updateProps(e) }}>05</button>
-      <button class="button button1" value="6" onClick={(e) => { updateProps(e) }}>06</button>
-      <button class="button button2" value="7" onClick={(e) => { updateProps(e) }}>07</button>
-      <button class="button button3" value="8" onClick={(e) => { updateProps(e) }}>08</button>
-      <button class="button button4" value="9" onClick={(e) => { updateProps(e) }}>09</button>
-      <button class="button button5" value="10" onClick={(e) => { updateProps(e) }}>10</button>
+            </div>
 
 
-    </div>
-  </div>
+          }
+
+             {
+              questions.questions?(questions.questions.map((item,index) => (
+                <div key={item.id}>
+
+                     <div className="card-header">{item.question} </div>
+
+                      <div className="card-body">
+                         <input type="radio" name="" value="1" />{item.op1}  <br/>
 
 
+                      <input type="radio" name=" " value="2" />{item.op2}{index} <br/>
 
+                      <input type="radio" name="" value="3" />{item.op3}{index}<br/>
+                      <input type="radio" name="" value="4" />{item.op4}{index}<br/>
+
+                </div>
+
+                    <input type="hidden" name={questions[index]} value={item.id} />
+                    <input type="hidden" name={questions[index]} value={item.question} />
+                    <input type="hidden" name={questions[index]} value={item.ans_option} />
+                </div>
+
+              ))):''
+              
+              } 
+            <button type="submit" class="btn btn-success d-block mx-auto mt-4">Submit Answer</button>
 
 
 
 
+
+
+
+
+            {/* 
             {            
                                
-                       <div className="card ">
+                            <div >
                                 
-                           <div className="card-header">{ questions.questions?(questions.questions[id].question):''}</div> 
-                           <div className="card-body">
+                           <div class="card-header">{ questions.questions?(questions.questions[id].question):''}</div> 
+                           <div class="card-body">
                             
                            <input type="radio" name="options" id="option1" value={questions.questions?(questions.questions[id].op1):''}  /> {questions.questions?(questions.questions[id].op1):''}<br />
                            <input type="radio" name="options" id="option2" value={questions.questions?(questions.questions[id].op2):''} /> {questions.questions?(questions.questions[id].op2):''} <br />
@@ -141,30 +142,29 @@ const Assessment = (props) => {
                            <input type="radio" name="options" id="option4" value={questions.questions?(questions.questions[id].op4):''}/> {questions.questions?(questions.questions[id].op4):''} <br />
                            
                             </div>
-                            </div>
                             
-                         
-            }  
+                            </div>
+            }   */}
+
+
+
 
 
 
 
 
             {/* {            
-
             {            
                      
                                <div className="mt-3">
                                    
                               <div class="card-header">{ questions.questions?(questions.questions[id].question):''}</div> 
-
                               <div class="card-body" onChange={ (event)=>{ /*if(event.target.checked) {event.target.checked=false; console.log(event.target.checked)}}}>
                               
                               <input type="radio"   id="op1" name={questions.questions?(questions.questions[id].op1):''} value="1" checked onChange={(event)=>{}} /> {questions.questions?(questions.questions[id].op1):''}<br />
                               <input type="radio"  id="op2" name={questions.questions?(questions.questions[id].op1):''}  value="2" checked onChange={(event)=>{} }/> {questions.questions?(questions.questions[id].op2):''} <br />
                               <input type="radio" id="op3" name={questions.questions?(questions.questions[id].op1):''}  value="3" checked onChange={(event)=>{}} /> {questions.questions?(questions.questions[id].op3):''} <br />
                               <input type="radio" id="op4" name={questions.questions?(questions.questions[id].op1):''}  value="4" checked onChange={(event)=>{}}/> {questions.questions?(questions.questions[id].op4):''} <br />
-
                               <div class="card-body">
                                
                               <input type="radio" name={questions.questions?(questions.questions[id].op1):''} value="1" /> {questions.questions?(questions.questions[id].op1):''}<br />
@@ -176,28 +176,21 @@ const Assessment = (props) => {
                                
                                </div>          }              */}
 
-
-          <br/>
-          <button className="btn btn-secondary" onClick={() => { setId(id -1 );}}  >Previous</button>
-
-          <button className="btn btn-info" onClick={() => { setId(id + 1); }} >Next</button>
-
-
-          <button className="btn btn-danger" onClick={()=>{}}>Quit</button>
-
-         
-          
+            {/* <div className="mt-5">
+            <button className="btn " onClick={() => { setId(id - 1);  console.log(id); }} style={{backgroundColor:"#0dcaf0"}}>Previous</button>
+            <button className="btn " onClick={() => { setId(id + 1);  console.log(id); }} style={{marginLeft:"200px",backgroundColor:"#0dcaf0"}}>Next</button>
+            <button className="btn " onClick={() => { setId(id + 1);  console.log(id); }} style={{float:"right" ,backgroundColor:"#0dcaf0"}} onClick={quit}>Quit</button>
+            </div> */}
+            {/* <div className="container mt-3 mb-3 text-center">
+            <a href="/" class="btn btn-info ">Submit Test</a>
+          </div> */}
 
           </div>
 
-         
-
         </div>
 
+
       </div>
-
-
-    </div>
     </div>
   );
 };
