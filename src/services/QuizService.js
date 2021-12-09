@@ -8,8 +8,8 @@ class QuizService {
         return axios.post(QUIZ_API_BASE_URL + '/start/' + id);
     }
 
-    submitQuiz(QuestionForm) {
-        return axios.post(QUIZ_API_BASE_URL + '/submit', QuestionForm);
+    submitQuiz(questions) {
+        return axios.post(QUIZ_API_BASE_URL + '/submit', questions);
 
     }
 
