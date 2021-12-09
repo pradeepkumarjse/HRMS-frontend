@@ -7,7 +7,7 @@ import Showemployee from './components/Showemployee';
 import HeaderComponent from './components/HeaderComponent';
 
 //import FooterComponent from './components/FooterComponent';
-      
+   
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 
@@ -24,7 +24,7 @@ function App() {
   return (
     <div>
 
-      <HeaderComponent />
+     
 
       <Router>
 
@@ -65,9 +65,6 @@ function App() {
           <Route exact path="/dashboard" component={Dashboard} />
 
         </Switch>
-
-
-
 
       </Router>
 
