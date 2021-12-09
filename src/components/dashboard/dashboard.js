@@ -44,9 +44,6 @@ export const Dashboard = (props) => {
        <div>
             {/* <MainWrapper> */}
 
-
-<HeaderComponent/>
-
             {/*                       
                           <li>
                             <button onClick={loginWithPopup}>Login</button>

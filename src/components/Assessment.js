@@ -4,12 +4,9 @@ import axios from "axios";
 import { useLocation } from "react-router";
 import QuizService from "../services/QuizService";
 import CountDownTimer from "./CountDownTimer ";
-
+import QuestionService from "../services/QuestionService";
 import { fetchUserData } from '../api/authenticationService';
 import HeaderComponent from "./HeaderComponent";
-
-
-import QuestionService from "../services/QuestionService";
 
 
 const Assessment = (props) => {
@@ -17,11 +14,13 @@ const Assessment = (props) => {
 const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
 
   const [questions, setQuestions] = useState([]);
- 
+  const [id, setId] = useState(0);
+  const [id1, setId1] = useState(1);
+  const [radio, setRadio] = useState(true);
+  
   const [userData, setData] = useState({});
 
- 
-   
+  const [q1, setQ1] = useState([]);
 
   const[ans,setAns]=useState(1);
 
@@ -29,16 +28,20 @@ const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
   let location = useLocation();
 
   useEffect(() => {
-
     fetchUserData().then((response) => {
       setData(response.data);
     }).catch((e) => {
       localStorage.clear();
       props.history.push('/');
     })
+    getQuizQuestions();
+
+
+  }, [])
+
+  const getQuizQuestions = () => {
     QuizService.getAllQuiz(location.state).then((response) => {
-      console.log(response.data);
-       setQuestions(response.data);
+      setQuestions(response.data);
 
     },
       (error) => {
@@ -46,11 +49,9 @@ const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
 
       }
     )
+  }
 
-
-  }, [])
-
- 
+  // questions.questions?(questions.questions[id].question):''
  const  updateQuestion = (e) => {
     e.preventDefault();
     setId(id+1);
@@ -75,23 +76,16 @@ const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
     }
     setId1(e);
 
-
-    
   }
 
+  console.log(questions.questions)
+  console.log(questions)
 
-  
+const  quit=(e)=>{
 
-  const quit = (e) => {  
-
-    localStorage.clear();
-    
-    props.history.push("/");
+      localStorage.clear();
+      props.history.push("/");
   }
-  
-
-
-  // console.log(Object.keys(questions))
 
   const changequestionno1=(e)=>{
    if(e.target){
@@ -170,9 +164,7 @@ console.log(ans)
 
 
     <div>
-
-      <HeaderComponent />
-  
+    <HeaderComponent />
       <div className="container">
 
       Welcome, {location.state}
