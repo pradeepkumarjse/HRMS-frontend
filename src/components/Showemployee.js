@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Employeeservice from '../services/Employeeservice';
+import HeaderComponent from './HeaderComponent';
 
 class showemployee extends Component {
 
@@ -42,6 +43,7 @@ class showemployee extends Component {
     render() {
         return (
             <div>
+            <HeaderComponent/>
                 <h2 className="text-center" >Employee List</h2>
                 <div>
                     {/* <button className="btn btn-success" onClick={this.addEmployee}>Add Employee</button> */}

@@ -1,15 +1,35 @@
-import React, { Component} from 'react';
+import React, { useState } from 'react';
+import { fetchUserData } from '../api/authenticationService';
+
+import { useDispatch } from 'react-redux';
+import { Button } from 'react-bootstrap';
+
+import { useHistory } from "react-router-dom";
 
 
 
-const HeaderComponent= (props)=> {
 
-    
-//   const  logOut=(e)=>{
-//       localStorage.clear();
-//       props.history.push("/");
 
-//     }
+const HeaderComponent = (props)=> {
+    const [userData, setData] = useState({});
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        fetchUserData().then((response) => {
+            setData(response.data);
+        }).catch((e) => {
+            localStorage.clear();
+           history.push('/');
+        })
+    }, [])
+
+    let history = useHistory();
+    const logOut = (e) => {
+        
+        localStorage.clear()
+        history.push('/')
+
+    }
 
     
         return (
@@ -20,11 +40,13 @@ const HeaderComponent= (props)=> {
 
                             <a href="/" className="navbar-brand text-white">HRMS Dashboard</a>
 
-                            {/* <div class="d-flex">
-                               
-                                <button class="btn btn-success ml-2"  onClick={logOut}>Logout</button>
-                            </div> */}
-                        </div>
+                            <div className="d-flex">
+                                 <Button className="fa fa-user-circle-o" style={{color:"white"}}>{userData && `${userData.firstName} ${userData.lastName}`}</Button>
+                                 <Button  className="fa fa-sign-out" aria-hidden="true" onClick={logOut}>Logout</Button>
+                            </div>
+
+                            </div> 
+                        
 
                     </nav>
 
