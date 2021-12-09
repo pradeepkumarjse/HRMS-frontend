@@ -7,11 +7,6 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import HeaderComponent from '../../components/HeaderComponent';
 import { useAuth0 } from '@auth0/auth0-react';
 
-
-// const MainWrapper = styled.div`
-//     padding-top:40px;
-// `;
-
 export const Dashboard = (props) => {
 
     const dispatch = useDispatch();
@@ -49,9 +44,6 @@ export const Dashboard = (props) => {
        <div>
             {/* <MainWrapper> */}
 
-
-<HeaderComponent/>
-
             {/*                       
                           <li>
                             <button onClick={loginWithPopup}>Login</button>
@@ -68,7 +60,7 @@ export const Dashboard = (props) => {
                           </pre>)
                         }  */}
                   
-
+                  <HeaderComponent />
             <div className="row m-0">
                 <div className="col-md-2 mt-2">
                     <nav className="list-group">
