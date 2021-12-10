@@ -7,24 +7,24 @@ import CountDownTimer from "./CountDownTimer ";
 import QuestionService from "../services/QuestionService";
 import { fetchUserData } from '../api/authenticationService';
 import HeaderComponent from "./HeaderComponent";
-import { useHistory } from "react-router-dom";
 
 
 const Assessment = (props) => {
 
-const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
+const hoursMinSecs = { hours: 0, minutes: 0, seconds: 15 }
 
   const [questions, setQuestions] = useState([]);
   const [id, setId] = useState(0);
   const [id1, setId1] = useState(1);
   const [radio, setRadio] = useState(true);
-  
+  const [ans1 ,setans]=useState([]);
   const [userData, setData] = useState({});
 
   const [q1, setQ1] = useState([]);
 
-  const[ans,setAns]=useState(1);
+  const[ans,setAns]=useState(0);
 
+  localStorage.setItem('question',JSON.stringify(questions))
 
   let location = useLocation();
 
@@ -58,22 +58,19 @@ const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
     setId(id+1);
 
     questions.questions[id].choose=ans;
+ setans({ans1:questions.questions[id].choose})
+  
 
   }
 
-  let history = useHistory();
   const submitQuiz=(e)=>{
-
-    QuizService.submitQuiz(questions);
-
-    sendResponse(e);
-
-
-  }
-
-  function sendResponse(e){
     e.preventDefault();
-    history.push("/quiz_submit_response")
+    questions.questions[id].choose=ans;
+    QuizService.submitQuiz(questions);
+//    console.log('localStorage',localStorage)
+     props.history.push("/quiz_submit_response")
+
+   
   }
 
   
@@ -86,6 +83,8 @@ const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
 
   }
 
+  console.log(questions.questions)
+  console.log(questions)
 
 const  quit=(e)=>{
 
@@ -162,8 +161,6 @@ const  quit=(e)=>{
  
 }
 
-console.log(ans)
-
 
   return (
 
@@ -176,7 +173,7 @@ console.log(ans)
       Welcome, {location.state}
 
       <div className="" style={{ color: "red", fontSize: "30px" }} >
-        <CountDownTimer hoursMinSecs={hoursMinSecs} />
+        <CountDownTimer hoursMinSecs={hoursMinSecs} questions={questions} />
       </div>
 
 
@@ -213,10 +210,10 @@ console.log(ans)
                            <div class="card-header">Q.{id+1} { questions.questions?(questions.questions[id].question):''}</div> 
                            <div class="card-body">
                             
-                           <input type="radio" name="options" id="option1" onClick={option1} value={questions.questions?(questions.questions[id].op1):''}  /> {questions.questions?(questions.questions[id].op1):''}<br />
-                           <input type="radio" name="options" id="option2" onClick={option2} value={questions.questions?(questions.questions[id].op2):''} /> {questions.questions?(questions.questions[id].op2):''} <br />
-                           <input type="radio" name="options" id="option3" onClick={option3} value={questions.questions?(questions.questions[id].op3):''}/> {questions.questions?(questions.questions[id].op3):''} <br />
-                           <input type="radio" name="options" id="option4" onClick={option4} value={questions.questions?(questions.questions[id].op4):''}/> {questions.questions?(questions.questions[id].op4):''} <br />
+                           <input type="radio" name="options" id="option1" onClick={option1} value="1"  /> {questions.questions?(questions.questions[id].op1):''}<br />
+                           <input type="radio" name="options" id="option2" onClick={option2} value="2" /> {questions.questions?(questions.questions[id].op2):''} <br />
+                           <input type="radio" name="options" id="option3" onClick={option3} value="3"/> {questions.questions?(questions.questions[id].op3):''} <br />
+                           <input type="radio" name="options" id="option4" onClick={option4} value="4"/> {questions.questions?(questions.questions[id].op4):''} <br />
                            
                             </div>
                             
@@ -260,9 +257,15 @@ console.log(ans)
         
         </>
         :  <> 
-        <button className="btn " onClick={() => { setId(id - 1);  console.log(id); }} style={{backgroundColor:"#0dcaf0"}}>Previous</button>
-        <button className="btn " onClick={updateQuestion} style={{marginLeft:"200px",backgroundColor:"#0dcaf0"}}>Save & Next</button>
+        <button className="btn " onClick={() => { setId(id - 1);  console.log(id); }} style={{backgroundColor:"#0dcaf0"}}>Previous</button> 
+        { (id==7)?<button className="btn " onClick={quit} style={{float:"right" ,backgroundColor:"#0dcaf0"}} >Quit</button>
+            :<>
+            <button className="btn " onClick={updateQuestion} style={{marginLeft:"200px",backgroundColor:"#0dcaf0"}}>Save & Next</button>
         <button className="btn " onClick={quit} style={{float:"right" ,backgroundColor:"#0dcaf0"}} >Quit</button>
+            </>
+
+        }
+        
         
         </>
       }
