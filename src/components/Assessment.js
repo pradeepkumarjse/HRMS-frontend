@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useHistory } from 'react-router';
 import axios from "axios";
 import { useLocation } from "react-router";
 import QuizService from "../services/QuizService";
@@ -11,19 +11,20 @@ import HeaderComponent from "./HeaderComponent";
 
 const Assessment = (props) => {
 
-const hoursMinSecs = { hours: 0, minutes: 0, seconds: 15 }
+  let history=useHistory();
+  
+
+const hoursMinSecs = { hours: 0, minutes: 0, seconds: 20 }
 
   const [questions, setQuestions] = useState([]);
   const [id, setId] = useState(0);
   const [id1, setId1] = useState(1);
   const [radio, setRadio] = useState(true);
-  const [ans1 ,setans]=useState([]);
   const [userData, setData] = useState({});
-
   const [q1, setQ1] = useState([]);
+  const[ans,setAns]=useState(0);
 
-  const[ans,setAns]=useState(1);
-
+  localStorage.setItem('question',JSON.stringify(questions))
 
   let location = useLocation();
 
@@ -57,8 +58,6 @@ const hoursMinSecs = { hours: 0, minutes: 0, seconds: 15 }
     setId(id+1);
 
     questions.questions[id].choose=ans;
- setans({ans1:questions.questions[id].choose})
-  
 
   }
 
@@ -66,9 +65,7 @@ const hoursMinSecs = { hours: 0, minutes: 0, seconds: 15 }
     e.preventDefault();
     questions.questions[id].choose=ans;
     QuizService.submitQuiz(questions);
-    localStorage.setItem('question',JSON.stringify(questions))
-    console.log('localStorage',localStorage)
-   
+    history.push("/");   
   }
 
   
@@ -81,8 +78,8 @@ const hoursMinSecs = { hours: 0, minutes: 0, seconds: 15 }
 
   }
 
-  console.log(questions.questions)
-  console.log(questions)
+  // console.log(questions.questions)
+  // console.log(questions)
 
 const  quit=(e)=>{
 

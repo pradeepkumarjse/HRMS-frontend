@@ -15,12 +15,8 @@ const CountDownTimer = ({ hoursMinSecs },props) => {
 
         if (hrs === 0 && mins === 0 && secs === 0)
         {
-        
-            // console.log( JSON.parse(localStorage.question));
-
-               
-             QuizService.submitQuiz(JSON.parse(localStorage.question));
-             history.push("/");
+            QuizService.submitQuiz(JSON.parse(localStorage.question));
+             history.push("/")
         }
             
         else if (mins === 0 && secs === 0) {
