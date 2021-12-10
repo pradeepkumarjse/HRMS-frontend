@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 const HeaderComponent = (props)=> {
     const [userData, setData] = useState({});
     const dispatch = useDispatch();
+    let history = useHistory();
 
     React.useEffect(() => {
         fetchUserData().then((response) => {
@@ -23,7 +24,7 @@ const HeaderComponent = (props)=> {
         })
     }, [])
 
-    let history = useHistory();
+   
     const logOut = (e) => {
         
         localStorage.clear()

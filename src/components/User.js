@@ -5,6 +5,8 @@ import { fetchUserData } from '../api/authenticationService';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Assessment from "./Assessment";
 import HeaderComponent from '../components/HeaderComponent';
+import Feedback from "react-bootstrap/esm/Feedback";
+import QuizSubmitResponse from '../components/QuizSubmitResponse';
 
 // let user=''
 const User = (props) => {
@@ -44,7 +46,11 @@ const User = (props) => {
         // console.log(username);
         // user=username
         return (
-            <Assessment user={props.username} />)
+            <>
+            <Assessment user={props.username} />
+            <QuizSubmitResponse user={props.username}/>
+            </>
+            )
     }
 
 
