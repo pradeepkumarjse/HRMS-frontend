@@ -22,8 +22,9 @@ const hoursMinSecs = { hours: 0, minutes: 0, seconds: 15 }
 
   const [q1, setQ1] = useState([]);
 
-  const[ans,setAns]=useState(1);
+  const[ans,setAns]=useState(0);
 
+  localStorage.setItem('question',JSON.stringify(questions))
 
   let location = useLocation();
 
@@ -66,8 +67,9 @@ const hoursMinSecs = { hours: 0, minutes: 0, seconds: 15 }
     e.preventDefault();
     questions.questions[id].choose=ans;
     QuizService.submitQuiz(questions);
-    localStorage.setItem('question',JSON.stringify(questions))
-    console.log('localStorage',localStorage)
+//    console.log('localStorage',localStorage)
+     props.history.push("/quiz_submit_response")
+
    
   }
 
@@ -208,10 +210,10 @@ const  quit=(e)=>{
                            <div class="card-header">Q.{id+1} { questions.questions?(questions.questions[id].question):''}</div> 
                            <div class="card-body">
                             
-                           <input type="radio" name="options" id="option1" onClick={option1} value={questions.questions?(questions.questions[id].op1):''}  /> {questions.questions?(questions.questions[id].op1):''}<br />
-                           <input type="radio" name="options" id="option2" onClick={option2} value={questions.questions?(questions.questions[id].op2):''} /> {questions.questions?(questions.questions[id].op2):''} <br />
-                           <input type="radio" name="options" id="option3" onClick={option3} value={questions.questions?(questions.questions[id].op3):''}/> {questions.questions?(questions.questions[id].op3):''} <br />
-                           <input type="radio" name="options" id="option4" onClick={option4} value={questions.questions?(questions.questions[id].op4):''}/> {questions.questions?(questions.questions[id].op4):''} <br />
+                           <input type="radio" name="options" id="option1" onClick={option1} value="1"  /> {questions.questions?(questions.questions[id].op1):''}<br />
+                           <input type="radio" name="options" id="option2" onClick={option2} value="2" /> {questions.questions?(questions.questions[id].op2):''} <br />
+                           <input type="radio" name="options" id="option3" onClick={option3} value="3"/> {questions.questions?(questions.questions[id].op3):''} <br />
+                           <input type="radio" name="options" id="option4" onClick={option4} value="4"/> {questions.questions?(questions.questions[id].op4):''} <br />
                            
                             </div>
                             
