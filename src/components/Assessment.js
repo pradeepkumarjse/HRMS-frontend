@@ -7,6 +7,7 @@ import CountDownTimer from "./CountDownTimer ";
 import QuestionService from "../services/QuestionService";
 import { fetchUserData } from '../api/authenticationService';
 import HeaderComponent from "./HeaderComponent";
+import { useHistory } from "react-router-dom";
 
 
 const Assessment = (props) => {
@@ -60,12 +61,19 @@ const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
 
   }
 
-  const submitQuiz=()=>{
+  let history = useHistory();
+  const submitQuiz=(e)=>{
 
     QuizService.submitQuiz(questions);
-    props.history.push("/dashboard");
+
+    sendResponse(e);
 
 
+  }
+
+  function sendResponse(e){
+    e.preventDefault();
+    history.push("/quiz_submit_response")
   }
 
   
@@ -78,8 +86,6 @@ const hoursMinSecs = { hours: 0, minutes: 9, seconds: 59 }
 
   }
 
-  console.log(questions.questions)
-  console.log(questions)
 
 const  quit=(e)=>{
 

@@ -18,6 +18,7 @@ import Assessment from './components/Assessment';
 import User from './components/User';
 import LoginPage from './components/LoginPage';
 import { Dashboard } from './components/dashboard/dashboard';
+import QuizSubmitResponse from './components/QuizSubmitResponse';
 
 
 function App() {
@@ -62,6 +63,8 @@ function App() {
           <Route path="/assessment" exact component={Assessment} ></Route>
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/quiz_submit_response" component={QuizSubmitResponse} />
+
 
         </Switch>
 
