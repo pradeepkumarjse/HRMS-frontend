@@ -14,7 +14,8 @@ class UpdateQuestionComponent extends Component {
       op2: '',
       op3: '',
       op4: '',
-      ans_option: ''
+      ans_option: '',
+      userData:''
     }
 
     this.ChangeQuestionHandler = this.ChangeQuestionHandler.bind(this);
@@ -47,13 +48,14 @@ class UpdateQuestionComponent extends Component {
     let question = { id: this.state.id, question: this.state.question, op1: this.state.op1, op2: this.state.op2, op3: this.state.op3, op4: this.state.op4, ans_option: this.state.ans_option };
     console.log('Question=>' + JSON.stringify(question));
     QuestionService.updateQuestion(question, this.state.id).then(res => {
-
+  
       this.props.history.push('/questions');
     });
 
 
   }
-  cancel() {
+  cancel(e) {
+    e.preventDefault();
     this.props.history.push('/questions');
   }
 

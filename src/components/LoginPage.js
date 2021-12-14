@@ -4,36 +4,45 @@ import { authenticate, authFailure, authSuccess } from '../redux/authActions';
 import '../css/loginpage.css';
 import { userLogin } from '../api/authenticationService';
 import { Alert, Spinner } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const LoginPage = ({ loading, error, ...props }) => {
-
 
     const [values, setValues] = useState({
         userName: '',
         password: ''
     });
 
+    
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         props.authenticate();
 
         userLogin(values).then((response) => {
+            toast.error("question deleted successfully")
 
             console.log("response", response);
+
             if (response.status === 200) {
-                props.setUser(response.data);
                 
+
+               
+
+                props.setUser(response.data);
                 props.history.push('/dashboard');
             }
+
             else {
                 props.loginFailure('Something Wrong!Please Try Again');
             }
 
 
         }).catch((err) => {
-
             if (err && err.response) {
-
                 switch (err.response.status) {
                     case 401:
                         console.log("401 status");
@@ -41,19 +50,14 @@ const LoginPage = ({ loading, error, ...props }) => {
                         break;
                     default:
                         props.loginFailure('Something Wrong!Please Try Again');
-
                 }
 
             }
             else {
                 props.loginFailure('Something Wrong!Please Try Again');
             }
-
-
-
-
         });
-        //console.log("Loading again",loading);
+        console.log("Loading again",loading);
 
 
     }
@@ -70,18 +74,13 @@ const LoginPage = ({ loading, error, ...props }) => {
 
     return (
         <div className="login-page">
-
-
             <section className="h-100">
                 <div className="container h-100">
-
                     <div className="row justify-content-md-center h-100">
                         <div className="card-wrapper">
-
                             <div className="card fat">
                                 <div className="card-body">
-                                    <h4 className="card-title">Login</h4>
-
+                                    <h4 className="card-title  text-center">Login</h4>
                                     <form className="my-login-validation" onSubmit={handleSubmit} noValidate={false}>
                                         <div className="form-group">
                                             <label htmlFor="email">User Name</label>
@@ -90,31 +89,24 @@ const LoginPage = ({ loading, error, ...props }) => {
                                             <div className="invalid-feedback">
                                                 UserId is invalid
                                             </div>
-
-
-
                                         </div>
-
                                         <div className="form-group">
                                             <label>Password
-                                                <a href="forgot.html" className="float-right">
+                                                <a href="/forgotPassword" className="float-right">
                                                     Forgot Password?
                                                 </a>
                                             </label>
-                                            <input id="password" type="password" className="form-control" minLength={8} value={values.password} onChange={handleChange} name="password" required />
+                                            <input id="password" type="password" className="form-control" minLength={5} value={values.password} onChange={handleChange} name="password" required />
                                             <div className="invalid-feedback">
                                                 Password is required
                                             </div>
                                         </div>
-
                                         <div className="form-group">
                                             <div className="custom-control custom-checkbox">
                                                 <input type="checkbox" className="custom-control-input" id="customCheck1" />
                                                 <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                                             </div>
                                         </div>
-
-
                                         <div className="form-group m-0">
                                             <button type="submit" className="btn btn-primary">
                                                 Login
@@ -127,23 +119,28 @@ const LoginPage = ({ loading, error, ...props }) => {
                                                         aria-hidden="true"
                                                     />
                                                 )}
-                                                {/* <ClipLoader
-                                        //css={override}
-                                        size={20}
-                                        color={"#123abc"}
-                                        loading={loading}
-                                        /> */}
+                                               
                                             </button>
                                         </div>
                                     </form>
+                                    <ToastContainer
+                                                    position="top-right"
+                                                    autoClose={5000}
+                                                    hideProgressBar={false}
+                                                    newestOnTop={false}
+                                                    closeOnClick
+                                                    rtl={false}
+                                                    pauseOnFocusLoss
+                                                    draggable
+                                                    pauseOnHover
+                                                />
+                                      
                                     {error &&
                                         <Alert style={{ marginTop: '20px' }} variant="danger">
                                             {error}
                                         </Alert>
 
                                     }
-
-
                                 </div>
                             </div>
                         </div>
@@ -151,11 +148,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                 </div>
             </section>
         </div>
-
     )
-
-
-
 }
 
 const mapStateToProps = ({ auth }) => {

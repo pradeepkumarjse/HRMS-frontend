@@ -1,12 +1,12 @@
 body.login-page {
-	background-color: #0b0b0c;
+	background-color: #f0f0f0;
 	font-size: 14px;
 }
 
 
 
 .login-page .brand {
-	width: 190px;
+	width: 90px;
 	height: 90px;
 	overflow: hidden;
 	border-radius: 50%;

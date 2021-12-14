@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { fetchUserData } from '../api/authenticationService';
 import HeaderComponent from './HeaderComponent';
+import LeaderBoard from './LeaderBoard';
 
 
 class ListQuestionsComponent extends Component {
@@ -13,9 +14,10 @@ class ListQuestionsComponent extends Component {
         super(props)
         this.state = {
             questions: [],
-            userdate:[]
+            userdate: [],
+
         }
-        
+
 
 
         this.addQuestion = this.addQuestion.bind(this);
@@ -37,15 +39,15 @@ class ListQuestionsComponent extends Component {
         QuestionService.deleteQuestion(id).then(
             res => {
                 toast.error("question deleted successfully")
-
-                this.setState({ questions: this.state.questions.filter(question => question.id !== id) })
+                console.log(LeaderBoard);
+               // this.setState({ questions: this.state.questions.filter(question => question.id !== id) })
             }
         );
     }
 
     componentDidMount() {
         fetchUserData().then((response) => {
-            this.setState({userdate:response.data});
+            this.setState({ userdate: response.data });
         }).catch((e) => {
             localStorage.clear();
             this.props.history.push('/');
@@ -58,75 +60,75 @@ class ListQuestionsComponent extends Component {
     }
 
     render() {
-        console.log(this.state.questions)
         return (
 
             <div>
-            <HeaderComponent/>
-                <h1 className="text-center">Questions</h1>
+                <HeaderComponent />
+                <div className='container'>
+                    <h1 className="text-center">Questions</h1>
 
-                <div>
-                    <button className="btn btn-primary" onClick={this.addQuestion}>Add Question</button>
+                    <div>
+                        <button className="btn btn-primary" onClick={this.addQuestion}>Add Question</button>
+
+                    </div>
+
+                    <div className="row mt-3">
+                        <table className="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <td><b>Qid</b></td>
+                                    <td><b>Question</b></td>
+                                    <td><b>Option1</b></td>
+                                    <td><b>Option2</b></td>
+                                    <td><b>Option3</b></td>
+                                    <td><b>Option4</b></td>
+                                    <td><b>Answer Option</b></td>
+                                    <td><b>Actions</b></td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {
+                                    this.state.questions.map(
+                                        question =>
+                                            <tr key={question.id}>
+                                                <td>{question.id}</td>
+                                                <td>{question.question}</td>
+                                                <td>{question.op1}</td>
+                                                <td>{question.op2}</td>
+                                                <td>{question.op3}</td>
+                                                <td>{question.op4}</td>
+                                                <td>{question.ans_option}</td>
+                                                <td>
+                                                    <button onClick={() => this.editQuestion(question.id)} className="btn btn-info">Update</button>
+                                                    <button style={{ marginTop: "10px", marginLeft: "1px" }} onClick={() => this.deleteQuestion(question.id)} className="btn btn-danger">Delete</button>
+
+                                                    <ToastContainer
+                                                        position="top-right"
+                                                        autoClose={1500}
+                                                        hideProgressBar={false}
+                                                        newestOnTop={false}
+                                                        closeOnClick
+                                                        rtl={false}
+                                                        pauseOnFocusLoss
+                                                        draggable
+                                                        pauseOnHover
+                                                    />
+
+                                                </td>
+
+                                            </tr>
+
+                                    )
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
                 </div>
-
-                <div className="row mt-3">
-                    <table className="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <td><b>Qid</b></td>
-                                <td><b>Question</b></td>
-                                <td><b>Option1</b></td>
-                                <td><b>Option2</b></td>
-                                <td><b>Option3</b></td>
-                                <td><b>Option4</b></td>
-                                <td><b>Answer Option</b></td>
-                                <td><b>Actions</b></td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {
-                                this.state.questions.map(
-                                    question =>
-                                        <tr key={question.id}>
-                                            <td>{question.id}</td>
-                                            <td>{question.question}</td>
-                                            <td>{question.op1}</td>
-                                            <td>{question.op2}</td>
-                                            <td>{question.op3}</td>
-                                            <td>{question.op4}</td>
-                                            <td>{question.ans_option}</td>
-                                            <td>
-                                                <button onClick={() => this.editQuestion(question.id)} className="btn btn-info">Update</button>
-                                                <button style={{ marginTop: "10px", marginLeft: "1px" }} onClick={() => this.deleteQuestion(question.id)} className="btn btn-danger">Delete</button>
-
-                                                <ToastContainer
-                                                    position="top-right"
-                                                    autoClose={5000}
-                                                    hideProgressBar={false}
-                                                    newestOnTop={false}
-                                                    closeOnClick
-                                                    rtl={false}
-                                                    pauseOnFocusLoss
-                                                    draggable
-                                                    pauseOnHover
-                                                />
-
-                                            </td>
-
-                                        </tr>
-
-                                )
-                            }
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-
 
             </div>
         );

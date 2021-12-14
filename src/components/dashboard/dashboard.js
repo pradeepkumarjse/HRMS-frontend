@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-//import styled from 'styled-components';
 import { fetchUserData } from '../../api/authenticationService';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import HeaderComponent from '../../components/HeaderComponent';
@@ -22,15 +21,9 @@ export const Dashboard = (props) => {
         })
     }, [])
 
-    const logOut = () => {
-        console.log(data);
-        localStorage.clear();
-        props.history.push('/');
-
-    }
+   
 
     const {
-
         loginWithPopup,
         loginWithRedirect,
         logout,
@@ -41,51 +34,29 @@ export const Dashboard = (props) => {
 
 
     return (
-       <div>
-            {/* <MainWrapper> */}
-
-            {/*                       
-                          <li>
-                            <button onClick={loginWithPopup}>Login</button>
-                          </li>
-                          <li>
-                          */}
-
-
-
-            {/* {
-                          isAuthenticated && (
-                          <pre style={{textAlign:'start'}}>       
-                             {JSON.stringify(user,null,2)}
-                          </pre>)
-                        }  */}
-                  
-                  <HeaderComponent />
+        <div>
+            <HeaderComponent />
             <div className="row m-0">
                 <div className="col-md-2 mt-2">
                     <nav className="list-group">
-                        <Link to="" className="btn  list-group-item list-group-item-action list-group-item-dark ">
+                        <Link to="/dashboard" className="btn  list-group-item list-group-item-action list-group-item-dark ">
                             <i class="fa fa-user" aria-hidden="true"></i> Admin</Link>
                         <Link to="/employee" className="btn list-group-item list-group-item-action ">
                             Employee</Link>
                         <Link to="/questions" className="btn list-group-item list-group-item-action ">Question</Link>
-                        <Link to="user" className="btn list-group-item list-group-item-action ">Start Assessment</Link>
-                        {/* <Link to="assessment" className="btn list-group-item list-group-item-action ">Start Accessment</Link> */}
-                    </nav>
+                        <Link to="/leader_board" className="btn list-group-item list-group-item-action ">LeaderBoard</Link>
+                        <Link to="/user" className="btn list-group-item list-group-item-action ">Start Assessment</Link>
+
+
+                </nav>
                 </div>
                 <div className="col-md-10">
-
                     <div className="container">
-
-
-                    <h4>Hello, {data && `${data.firstName} ${data.lastName}`}</h4>
-                <br></br>
+                        <h4>Hello, {data && `${data.firstName} ${data.lastName}`}</h4>
+                        <br></br>
                     </div>
-
                 </div>
-
             </div>
-            {/* </MainWrapper> */}
-            </div>
+        </div>
     )
 }
