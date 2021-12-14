@@ -5,6 +5,8 @@ import { fetchUserData } from '../api/authenticationService';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Assessment from "./Assessment";
 import HeaderComponent from '../components/HeaderComponent';
+import Feedback from "react-bootstrap/esm/Feedback";
+import QuizSubmitResponse from '../components/QuizSubmitResponse';
 
 // let user=''
 const User = (props) => {
@@ -22,31 +24,22 @@ const User = (props) => {
         })
     }, [])
 
+    // setUsername(userData.userName);
 
-
-
-    // QuizCall(username){
-
-    //     QuizService.QuizAns().then(
-    //         (response)=>{
-    //                 console.log(response);
-    //                 console.log(response.data);
-    //                 setUser(response.data);
-    //         },
-    //         (error)=>{
-    //                 console.log(error);
-    //         });
-
-    // }
+  
 
     const onChangeHandler = (setUsername, event) => {
-        setUsername(event.target.value)
-        // console.log(username);
-        // user=username
+        setUsername(event.target.value)  
+              
+      
         return (
-            <Assessment user={props.username} />)
+            <>
+            <Assessment user={props.username} />
+            <QuizSubmitResponse user={props.username}/>
+            </>
+            )
     }
-
+    
 
     return (
 
@@ -61,7 +54,7 @@ const User = (props) => {
 
                 <div className="">
                     <label class="username">Enter Username</label>
-                    <input type="text" className="form-control mb-2 mt-2" onChange={onChangeHandler.bind(this, setUsername)} id="username" aria-describedby="emailHelp" placeholder="Enter Username" name="username" />
+                    <input type="text" className="form-control mb-2 mt-2" onChange={onChangeHandler.bind(this, setUsername)} id="username" aria-describedby="emailHelp" placeholder={userData.userName} name="username" />
 
                 </div>
                 <Link to={{ pathname: '/assessment', state: username }} className="btn btn-info" >Start Test</Link>
