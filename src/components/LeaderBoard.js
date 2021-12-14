@@ -48,7 +48,7 @@ export default function LeaderBoard(props) {
             <HeaderComponent />
             <div className='container'>
 
-                <h3>LeaderBoard</h3>
+                <h3 className='text-center mt-2 mb-2'>LeaderBoard</h3>
 
                 <div className='row mt-3'>
                     <table className='table table-striped table-bordered'>

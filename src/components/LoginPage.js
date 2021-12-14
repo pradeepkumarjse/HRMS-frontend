@@ -29,8 +29,7 @@ const LoginPage = ({ loading, error, ...props }) => {
 
             if (response.status === 200) {
                 
-
-               
+       
 
                 props.setUser(response.data);
                 props.history.push('/dashboard');
@@ -84,7 +83,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                                     <form className="my-login-validation" onSubmit={handleSubmit} noValidate={false}>
                                         <div className="form-group">
                                             <label htmlFor="email">User Name</label>
-                                            <input id="username" type="text" className="form-control" minLength={5} value={values.userName} onChange={handleChange} name="userName" required />
+                                            <input id="username" type="text" className="form-control" minLength={4} value={values.userName} onChange={handleChange} name="userName" required />
 
                                             <div className="invalid-feedback">
                                                 UserId is invalid

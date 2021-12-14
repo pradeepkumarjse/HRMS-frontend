@@ -12,6 +12,9 @@ import LoginPage from './components/LoginPage';
 import { Dashboard } from './components/dashboard/dashboard';
 import QuizSubmitResponse from './components/QuizSubmitResponse';
 import LeaderBoard from './components/LeaderBoard';
+import { UserDashboard } from './components/dashboard/UserDashboard';
+
+
 
 
 function App() {
@@ -30,6 +33,7 @@ function App() {
           <Route path="/assessment" exact component={Assessment} ></Route>
           <Route exact path="/quiz_submit_response" component={QuizSubmitResponse} />
           <Route exact path="/leader_board" component={LeaderBoard} />
+          <Route exact path="/user-dashboard" component={UserDashboard}/>
 
 
         </Switch>
