@@ -1,15 +1,29 @@
 import React, { useState, useEffect } from "react";
 
 import QuizService from "../services/QuizService";
+import { fetchUserData } from '../api/authenticationService';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import Assessment from "./Assessment";
+import HeaderComponent from '../components/HeaderComponent';
 
-import { BrowserRouter as Router,Link,Route,Switch } from 'react-router-dom';
-const User=()=>{
+// let user=''
+const User = (props) => {
 
-    const [user, setUser] = useState([]);
+    const [username, setUsername] = useState('');
+    const [userData, setData] = useState({});
 
-    useEffect(()=>{
-         
-    },[])
+
+    React.useEffect(() => {
+        fetchUserData().then((response) => {
+            setData(response.data);
+        }).catch((e) => {
+            localStorage.clear();
+            props.history.push('/');
+        })
+    }, [])
+
+
+
 
     // QuizCall(username){
 
@@ -25,28 +39,45 @@ const User=()=>{
 
     // }
 
-    return(
+    const onChangeHandler = (setUsername, event) => {
+        setUsername(event.target.value)
+        // console.log(username);
+        // user=username
+        return (
+            <Assessment user={props.username} />)
+    }
+
+
+    return (
 
         <div>
+       
+              <HeaderComponent/>
+           
+           <div className="main-container container py-5 px-4">
 
-            <div className="col-md-6 offset-3 mt-5" >
-            {/* onSubmit={()=>this.QuizCall(username)} */}
-        <form >
-            <div class="form-group">
-                <label for="user">User Name</label>
-                <input type="text" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter User Name"  name="username"/>
+            <div className="card  py-5 px-4" >           
+
+
+                <div className="">
+                    <label class="username">Enter Username</label>
+                    <input type="text" className="form-control mb-2 mt-2" onChange={onChangeHandler.bind(this, setUsername)} id="username" aria-describedby="emailHelp" placeholder="Enter Username" name="username" />
+
+                </div>
+                <Link to={{ pathname: '/assessment', state: username }} className="btn btn-info" >Start Test</Link>
+
+                
+                
+          </div> 
+
+
+
             </div>
-
-            {/* <button type="submit" className="btn btn-primary" >Start Test</button> */}
-
-            <Link to="assessment" className="btn btn-primary " >Start Test</Link> 
-
-        </form>
-
-        </div>
 
         </div>
     )
 
+
 }
+
 export default User;

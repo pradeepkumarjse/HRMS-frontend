@@ -1,37 +1,60 @@
-import React from 'react';
-import {useAuth0} from '@auth0/auth0-react';
+import React, { useState } from 'react';
+import { fetchUserData } from '../api/authenticationService';
+
+import { useDispatch } from 'react-redux';
+import { Button } from 'react-bootstrap';
+
+import { useHistory } from "react-router-dom";
 
 
-function HeaderComponent(){
-    const {
 
-        loginWithPopup,
-        logout,
-        user,
-        isAuthenticated,
-      }=useAuth0();
-    
+
+
+const HeaderComponent = (props)=> {
+    const [userData, setData] = useState({});
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        fetchUserData().then((response) => {
+            setData(response.data);
+        }).catch((e) => {
+            localStorage.clear();
+           history.push('/');
+        })
+    }, [])
+
+    let history = useHistory();
+    const logOut = (e) => {
         
+        localStorage.clear()
+        history.push('/')
+
+    }
+
+    
         return (
             <div>
-            <header>
-                <nav className="navbar navbar-expand-md bg-primary">
-                    <div className="container-fluid">
-        
-                       <a href="/" className="navbar-brand text-white">HRMS Dashboard</a>
-                       
-                       <div class="d-flex">
-                       <button class="btn btn-success" onClick={loginWithPopup}>SignIn</button>
-                       <button class="btn btn-success ml-2">SignUp</button>
-                       </div>
-                    </div>
+                <header>
+                    <nav className="navbar navbar-expand-md bg-primary">
+                        <div className="container-fluid">
 
-                </nav>
+                            <a href="/" className="navbar-brand text-white">HRMS Dashboard</a>
 
-            </header>
-                
+                            <div className="d-flex">
+                                 <Button className="fa fa-user-circle-o" style={{color:"white"}}>{userData && `${userData.firstName} ${userData.lastName}`}</Button>
+                                 <Button  className="fa fa-sign-out" aria-hidden="true" onClick={logOut}>Logout</Button>
+                            </div>
+
+                            </div> 
+                        
+
+                    </nav>
+
+                </header>
+
             </div>
         );
-    }
+  
+}
 
 export default HeaderComponent;

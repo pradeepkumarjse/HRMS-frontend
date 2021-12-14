@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Adminservice from '../services/AdminService';
+import HeaderComponent from './HeaderComponent';
 
 class ShowAdmin extends Component {
 
@@ -44,6 +45,7 @@ class ShowAdmin extends Component {
     render() {
         return (
             <div>
+                <HeaderComponent/>
                 <h2 className="text-center" >Admin List</h2>
                 <div>
                     {/* <button className="btn btn-success" onClick={this.addAdmin}>Add Admin</button> */}
@@ -82,7 +84,7 @@ class ShowAdmin extends Component {
                         <tr key={admin.e_id}>
 
                         {/* <td>{admin.id}</td>  */}
-                        <td>{admin.e_id}</td>
+                        <td>{admin.e_id}</td> 
                         <td>{admin.e_name}</td>
                         <td>{admin.e_email}</td>
                         <td>{admin.e_date}</td>
@@ -94,8 +96,8 @@ class ShowAdmin extends Component {
                         <td>
                        
          
-                        <button className="btn btn-success " onClick={()=>this.editAdmin(admin.e_id)}>Update</button>
-                        <button className="btn btn-danger" onClick={()=>this.deleteAdmin(admin.e_id)} style={{marginLeft:"2px"}}>Delete</button> 
+                        <button className="btn btn-success btn-sm " onClick={()=>this.editAdmin(admin.e_id)}>Update</button>
+                        <button className="btn btn-danger btn-sm" onClick={()=>this.deleteAdmin(admin.e_id)} style={{marginLeft:"2px"}}>Delete</button> 
                         </td>
                         </tr>
                     )

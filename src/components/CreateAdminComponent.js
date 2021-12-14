@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import Adminservice from '../services/AdminService';
-
+import AdminService from '../services/AdminService';
+import HeaderComponent from './HeaderComponent';
 import {Link} from 'react-router-dom';
 // import {useNavigate} from 'react-router-dom';
-
 class CreateAdminComponent extends Component {
 
     constructor(props){
         super(props)
 
         this.state={
-            AdminId:'',
+
             AdminName:'',
             Adminemail:'',
             Date:'',
@@ -18,8 +17,16 @@ class CreateAdminComponent extends Component {
              Mobile:'',
              Userid:'',
              Password:'',
-             City:''
-             
+             City:'',
+             AdminNameerror:'',
+             Adminemailerror:'',
+             Dateerror:'',
+              Gendererror:'',
+              Mobileerror:'',
+              Useriderror:'',
+              Passworderror:'',
+              Cityerror:''
+              
         }
 
         this.changeAdminId=this.changeAdminId.bind(this);
@@ -31,10 +38,57 @@ class CreateAdminComponent extends Component {
         this.changeUserid=this.changeUserid.bind(this);
         this.changePassword=this.changePassword.bind(this);
         this.changeCity=this.changeCity.bind(this);
-        this.saveAdmin=this.saveAdmin.bind(this);
+        this.SaveAdmin=this.SaveAdmin.bind(this);
     }
 
-    saveAdmin=(e)=>{
+    valid() {
+
+        if (this.state.AdminName == '' && this.state.Gender == '' && this.state.Date == ''
+            && this.state.Adminemail == '' && this.state.Mobile == '' && this.state.Userid == ''
+            && this.state.Password == '' && this.state.City=='') {
+
+            this.setState({
+
+                AdminNameerror: "AdminName field not empty", Gendererror: "Gender field not empty", Dateerror: "date field not empty"
+                , Adminemailerror: "Adminemail field not empty", Mobileerror: "Mobile field not empty", Useriderror: "Userid field not empty"
+                , Passworderror: "password field not empty" , Cityerror: "City field not empty"
+            })
+        }
+
+        else if (this.state.AdminName == '') {
+            this.setState({ AdminNameerror: "AdminName field not empty" })
+        }
+
+        else if (this.state.City == '') {
+            this.setState({ Cityerror: "City field not empty" })
+        }
+
+        else if (this.state.Date == '') {
+            this.setState({ Dateerror: "Date is required" })
+        }
+            else if (this.state.Gender == '') {
+                this.setState({ Gendererror: "Gender is required" })
+        }
+
+        else if (this.state.Adminemail == '') {
+            this.setState({ Adminemailerror: "Adminemail is required" })
+        }
+        else if (this.state.Mobile == '') {
+            this.setState({ Mobileerror: "Mobile no is required" })
+        }
+        else if (this.state.Userid == '') {
+            this.setState({ Useriderror: "Userid is required" })
+        }
+        else if (this.state.Password == '') {
+            this.setState({ Passworderror: "Password is required" })
+        }
+        else {
+            return true
+        }
+
+    }
+
+    SaveAdmin=(e)=>{
 
         e.preventDefault();
 
@@ -42,18 +96,31 @@ class CreateAdminComponent extends Component {
         e_email:this.state.Adminemail,e_date:this.state.Date,
         e_gender:this.state.Gender, e_mobile:this.state.Mobile,
        e_userid:this.state.Userid, e_password:this.state.Password,
-        e_City:this.state.City};
+        e_city:this.state.City};
 
         console.log('admin =>' +JSON.stringify(admin));
 
-        Adminservice.createAdmin(admin).then(res =>{    
+
+        {
+            this.setState({
+                AdminNameerror: "", Cityerror: "", Dateerror: ""
+                , Adminemailerror: "", Mobileerror: "", Useriderror: ""
+                , Passworderror: "", Gendererror:""
+            })
+        }
+
+
+        if (this.valid()) {
+
+
+        AdminService.CreateAdmin(admin).then(res =>{    
 
             this.props.history.push('/admin');
 
         });
 
     }
-
+    }
     cancel(){
         this.props.history.push('/admin');
       }
@@ -183,7 +250,7 @@ class CreateAdminComponent extends Component {
 
                                             
                                         <button className="btn btn-success" onClick={this.saveAdmin}>Save</button>
-                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>cancel</button>
+                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>cancel</button>
                    
                                     </form>
                                     </div>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ADMIN_API_BASE_URL = "http://localhost:8086/api/v1/admin";
+const ADMIN_API_BASE_URL = "http://localhost:4041/api/v1/admin";
 
 class AdminService{
 
