@@ -43,6 +43,7 @@ class CreateEmployeeComponent extends Component {
             && this.state.email == '' && this.state.mobile == '' && this.state.userid == ''
             && this.state.password == '') {
             this.setState({
+
                 nameerror: "text field not empty", addresserror: "address field not empty", dateerror: "date field not empty"
                 , emailerror: "email field not empty", mobileerror: "mobile field not empty", useriderror: "userid field not empty"
                 , passworderror: "password field not empty"
@@ -95,8 +96,8 @@ class CreateEmployeeComponent extends Component {
 
         {
             this.setState({
-                nameerror: "", addresserror: "", dateerror: ""
-                , emailerror: "", mobileerror: "", useriderror: ""
+                Nameerror: "", Addresserror: "", Dateerror: ""
+                , Emailerror: "", Mobileerror: "", Useriderror: ""
                 , passworderror: ""
             })
         }
