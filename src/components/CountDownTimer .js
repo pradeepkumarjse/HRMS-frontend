@@ -14,11 +14,7 @@ const CountDownTimer = ({ hoursMinSecs },props) => {
     const tick = () => {
 
         if (hrs === 0 && mins === 0 && secs === 0)
-        {
-        
-            //console.log(localStorage.question);
-
-               
+        {             
              QuizService.submitQuiz(JSON.parse(localStorage.question));
              history.push("/quiz_submit_response");
         }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import QuestionService from '../services/QuestionService';
 //import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import HeaderComponent from './HeaderComponent';
 
 
 
@@ -82,7 +83,6 @@ class CreateQuestionComponent extends Component {
 
   //  step 3
   componentDidMount() {
-    console.log(this.state.id)
     //step 4
     if (this.state.id === '_add') {
       return
@@ -105,7 +105,8 @@ class CreateQuestionComponent extends Component {
 
 
   }
-  cancel() {
+  cancel(e) {
+    e.preventDefault();
     this.props.history.push('/questions');
   }
 
@@ -144,7 +145,6 @@ class CreateQuestionComponent extends Component {
     else {
 
       let question = { id: this.state.id, question: this.state.question, op1: this.state.op1, op2: this.state.op2, op3: this.state.op3, op4: this.state.op4, ans_option: this.state.ans_option };
-      console.log('Question=>' + JSON.stringify(question));
 
       QuestionService.updateQuestion(question, this.state.id).then(res => {
 
@@ -188,6 +188,7 @@ class CreateQuestionComponent extends Component {
   render() {
     return (
       <div>
+        <HeaderComponent />
         <div className="conatiner">
           <div className="row">
             <div className="card col-md-6 offset-md-3 offset-md-3">
@@ -236,21 +237,12 @@ class CreateQuestionComponent extends Component {
                   </div>
                   <div style={{ marginTop: "10px" }} >
                     <button className="btn btn-success" onClick={this.saveOrUpdateQuestion}>Save</button>
-
-
                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>cancel</button>
-
-
-
-
                   </div>
                 </form>
-
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
     );
