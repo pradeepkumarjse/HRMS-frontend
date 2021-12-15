@@ -38,8 +38,8 @@ export default function QuizSubmitResponse() {
             </div>
                  <br/>
                  <div >
-                 <textarea  name="subject" value={userFeedback} onChange={ e => setUserFeedback(e.target.value)} placeholder="Write something.." style={{"height" : "200px", "width" : "400px"}}></textarea>
-                 <button onClick={sendFeedback}>send feedback</button>
+                 <textarea  name="subject" value={userFeedback} onChange={ e => setUserFeedback(e.target.value)} placeholder="Write something.." style={{"height" : "200px", "width" : "400px"}}></textarea><br />
+                 <button onClick={sendFeedback} className="btn btn-primary">send feedback</button>
                  </div>
             </div>
         </div>

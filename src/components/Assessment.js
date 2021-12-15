@@ -8,13 +8,12 @@ import QuestionService from "../services/QuestionService";
 import { fetchUserData } from '../api/authenticationService';
 import HeaderComponent from "./HeaderComponent";
 
-
 const Assessment = (props) => {
 
-  let history=useHistory();
-  
+let history=useHistory();
+let result=false;
 
-const hoursMinSecs = { hours: 0, minutes: 0, seconds: 20 }
+const hoursMinSecs = { hours: 0, minutes: 30, seconds: 10 }
 
   const [questions, setQuestions] = useState([]);
   const [id, setId] = useState(0);
@@ -58,7 +57,7 @@ const hoursMinSecs = { hours: 0, minutes: 0, seconds: 20 }
     setId(id+1);
 
     questions.questions[id].choose=ans;
-
+   
   }
 
   const submitQuiz=(e)=>{
@@ -140,6 +139,15 @@ const  quit=(e)=>{
    const option1=()=>{
     console.log(ans)
      setAns(1);
+
+      //  if(e.target.checked)
+      //  {
+      //    this.setState({
+      //      radioButton:false
+      //    })
+      //  }
+
+     
        }
 
 
@@ -196,11 +204,6 @@ const  quit=(e)=>{
                     */}
 
 
-
-
-
-
-
             {            
                                
                             <div >
@@ -208,15 +211,15 @@ const  quit=(e)=>{
                            <div class="card-header">Q.{id+1} { questions.questions?(questions.questions[id].question):''}</div> 
                            <div class="card-body">
                             
-                           <input type="radio" name="options" id="option1" onClick={option1} value="1"  /> {questions.questions?(questions.questions[id].op1):''}<br />
-                           <input type="radio" name="options" id="option2" onClick={option2} value="2" /> {questions.questions?(questions.questions[id].op2):''} <br />
-                           <input type="radio" name="options" id="option3" onClick={option3} value="3"/> {questions.questions?(questions.questions[id].op3):''} <br />
-                           <input type="radio" name="options" id="option4" onClick={option4} value="4"/> {questions.questions?(questions.questions[id].op4):''} <br />
+                           <input type="radio" name="options" id="option1"  onClick={option1} value="1"  /> {questions.questions?(questions.questions[id].op1):''}<br />
+                           <input type="radio" name="options" id="option2"  onClick={option2} value="2" /> {questions.questions?(questions.questions[id].op2):''} <br />
+                           <input type="radio" name="options" id="option3"  onClick={option3} value="3"/> {questions.questions?(questions.questions[id].op3):''} <br />
+                           <input type="radio" name="options" id="option4"  onClick={option4} value="4"/> {questions.questions?(questions.questions[id].op4):''} <br />
                            
                             </div>
                             
                             </div>
-            }  
+             }  
 
 
 
