@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Showemployee from './components/Showemployee';
-import ShowAdmin from './components/ShowAdmin';
+import Showadmin from './components/Showadmin';
 
 
 import HeaderComponent from './components/HeaderComponent';
@@ -42,7 +42,7 @@ function App() {
           <Route path="/add-employee" component={CreateEmployeeComponent}></Route>
           <Route path="/update-employee/:id" component={UpdateEmployeeComponent}></Route>
 
-          <Route path="/Admin" exact component={ShowAdmin} ></Route>
+          <Route path="/admin" exact component={Showadmin} ></Route>
           <Route path="/add-admin" component={CreateAdminComponent}></Route>
           <Route path="/update-admin/:id" component={UpdateAdminComponent}></Route>
 
@@ -56,6 +56,9 @@ function App() {
           <Route exact path="/employee" exact component={Showemployee} ></Route>
           <Route  exact path="/add-employee" component={CreateEmployeeComponent}></Route>
           <Route exact path="/upda te-employee/:id" component={UpdateEmployeeComponent}></Route>
+          <Route exact path="/admin" exact component={Showadmin} ></Route>
+          <Route  exact path="/add-admin" component={CreateAdminComponent}></Route>
+          <Route exact path="/upda te-admin/:id" component={UpdateAdminComponent}></Route>
           <Route  path="/user" exact component={User} ></Route>
           <Route path="/assessment" exact component={Assessment} ></Route>
           <Route exact path="/quiz_submit_response" component={QuizSubmitResponse} />

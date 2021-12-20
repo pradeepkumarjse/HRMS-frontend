@@ -39,11 +39,9 @@ export const Dashboard = (props) => {
             <div className="row m-0">
                 <div className="col-md-2 mt-2">
                     <nav className="list-group">
-<<<<<<< HEAD
+
                         <Link to="/admin" className="btn  list-group-item list-group-item-action list-group-item-dark ">
-=======
-                        <Link to="/dashboard" className="btn  list-group-item list-group-item-action list-group-item-dark ">
->>>>>>> 8494eed70fbe957e4d7ad71722233e48f7b2518d
+
                             <i class="fa fa-user" aria-hidden="true"></i> Admin</Link>
                         <Link to="/employee" className="btn list-group-item list-group-item-action ">
                             Employee</Link>
