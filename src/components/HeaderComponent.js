@@ -39,7 +39,7 @@ const HeaderComponent = (props)=> {
                     <nav className="navbar navbar-expand-md bg-primary">
                         <div className="container-fluid">
 
-                            <a href="/" className="navbar-brand text-white">HRMS Dashboard</a>
+                            <a href="/dashboard" className="navbar-brand text-white">HRMS Dashboard</a>
 
                             <div className="d-flex">
                                  <Button className="fa fa-user-circle-o" style={{color:"white"}}>{userData && `${userData.firstName} ${userData.lastName}`}</Button>

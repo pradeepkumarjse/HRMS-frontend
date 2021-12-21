@@ -3,12 +3,10 @@ import { fetchUserData } from '../api/authenticationService';
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router";
 
-
-
-export default function QuizSubmitResponse() {
+export default function QuizSubmitResponse(props) {
     let history = useHistory();
-    let location=useLocation();
-    const [userFeedback,setUserFeedback]=useState('');
+    let location = useLocation();
+    const [userFeedback, setUserFeedback] = useState('');
 
     const [userData, setData] = useState({});
     React.useEffect(() => {
@@ -16,19 +14,15 @@ export default function QuizSubmitResponse() {
             setData(response.data);
         }).catch((e) => {
             localStorage.clear();
-           history.push('/');
+            history.push('/');
         })
     }, [])
 
-     const sendFeedback=(e)=>{
-         e.preventDefault();
-         console.log("feedback send seccessfully...")
-         console.log(userFeedback);
-         console.log(location.username)
-     }
-
-    
-
+    const sendFeedback = (e) => {
+        e.preventDefault();
+        console.log("feedback send seccessfully...")
+        props.history.push("/dashboard")
+    }
 
     return (
         <div>
@@ -41,6 +35,8 @@ export default function QuizSubmitResponse() {
                  <textarea  name="subject" value={userFeedback} onChange={ e => setUserFeedback(e.target.value)} placeholder="Write something.." style={{"height" : "200px", "width" : "400px"}}></textarea><br />
                  <button onClick={sendFeedback} className="btn btn-primary">send feedback</button>
                  </div>
+
+               
             </div>
         </div>
     )
