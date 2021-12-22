@@ -18,17 +18,14 @@ class Employeeservice {
     createEmployee(emp,file) {
 
       
-        // return axios.post( EMPLOYEE_API_BASE_URL, emp,file)
+        return axios.post( EMPLOYEE_API_BASE_URL, emp,file)
 
-        return axios({
-            url:EMPLOYEE_API_BASE_URL,
-            method:"POST",
-            headers:{
-               
-            'content-type': 'multipart/form-data'},
-            emp,
-            file
-        })
+        // return axios({
+        //     url:EMPLOYEE_API_BASE_URL,
+        //     method:"POST",
+        //     emp,
+        //     file
+        // })
 
     }
 
