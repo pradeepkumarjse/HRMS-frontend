@@ -33,7 +33,7 @@ export default function QuizSubmitResponse(props) {
         <div>
             <div className="text-center mt-5">
                 <div className="container">
-                    <h2 style={{ color: '#456E59' }}>Thank you giving the Assessment...</h2>
+                    <h2 style={{ color: '#456E59' }}>Thank you for giving the Assessment...</h2>
                 </div>
                 <br />
                 <div >

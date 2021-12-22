@@ -18,6 +18,7 @@ class ListQuestionsComponent extends Component {
 
         }
 
+        
 
 
         this.addQuestion = this.addQuestion.bind(this);
@@ -60,6 +61,7 @@ class ListQuestionsComponent extends Component {
     }
 
     render() {
+
         return (
 
             <div>
@@ -82,6 +84,7 @@ class ListQuestionsComponent extends Component {
                                     <td><b>Option2</b></td>
                                     <td><b>Option3</b></td>
                                     <td><b>Option4</b></td>
+                                    <td><b>image</b></td>
                                     <td><b>Answer Option</b></td>
                                     <td><b>Actions</b></td>
                                 </tr>
@@ -98,8 +101,11 @@ class ListQuestionsComponent extends Component {
                                                 <td>{question.op2}</td>
                                                 <td>{question.op3}</td>
                                                 <td>{question.op4}</td>
+                                                <td><img  src={question.picPath} alt="question pic" height={60} width={60} style={{borderRadius: '50%'}}/></td>
                                                 <td>{question.ans_option}</td>
-                                                <td>
+                                                
+                                                <td> 
+                                                
                                                     <button onClick={() => this.editQuestion(question.id)} className="btn btn-info">Update</button>
                                                     <button style={{ marginTop: "10px", marginLeft: "1px" }} onClick={() => this.deleteQuestion(question.id)} className="btn btn-danger">Delete</button>
 

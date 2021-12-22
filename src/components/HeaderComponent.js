@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { fetchUserData } from '../api/authenticationService';
+import { fetchUserData,userLogout } from '../api/authenticationService';
+
 
 import { useDispatch } from 'react-redux';
 import { Button } from 'react-bootstrap';
@@ -26,9 +27,9 @@ const HeaderComponent = (props)=> {
 
    
     const logOut = (e) => {
-        
-        localStorage.clear()
-        history.push('/')
+      
+       localStorage.clear()
+       history.push('/')
 
     }
 
@@ -42,7 +43,8 @@ const HeaderComponent = (props)=> {
                             <a href="/dashboard" className="navbar-brand text-white">HRMS Dashboard</a>
 
                             <div className="d-flex">
-                                 <Button className="fa fa-user-circle-o" style={{color:"white"}}>{userData && `${userData.firstName} ${userData.lastName}`}</Button>
+                            <img src={userData.profilePicPath} alt="profile pic" height={60} width={60} style={{borderRadius: '50%'}}/>
+                                 <Button className="nav-item nav-link " style={{color:"white"}}>{userData && `${userData.firstName} ${userData.lastName}`}</Button>
                                  <Button  className="fa fa-sign-out" aria-hidden="true" onClick={logOut}>Logout</Button>
                             </div>
 

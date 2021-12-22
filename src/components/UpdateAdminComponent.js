@@ -13,7 +13,7 @@ class UpdateAdminComponent extends Component {
              AdminName:'',
              Adminemail:'',
              Date:'',
-              Gender:'',
+             Gender:'',
               Mobile:'',
               Userid:'',
               Password:'',
