@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {Link} from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { uploadImage } from "../actions/uploadActions";
 
 const UserRegistration = (props) => {
@@ -80,6 +81,8 @@ const UserRegistration = (props) => {
         imageData.append("username", username);
         imageData.append("password", password);
         dispatch(uploadImage(imageData))
+          toast.success("Regsitration successfull!");
+        history.push("/")
 
     }
 
