@@ -16,6 +16,8 @@ class CreateEmployeeComponent extends Component {
             mobile: '',
             userid: '',
             password: '',
+            image: '',
+            
             nameerror: '',
             addresserror: '',
             dateerror: '',
@@ -23,7 +25,7 @@ class CreateEmployeeComponent extends Component {
             mobileerror: '',
             useriderror: '',
             passworderror: '',
-
+            imageerror: '',
         }
 
         this.changeName = this.changeName.bind(this);
@@ -32,6 +34,7 @@ class CreateEmployeeComponent extends Component {
         this.changeEmail = this.changeEmail.bind(this);
         this.changeGender = this.changeGender.bind(this);
         this.changeMobile = this.changeMobile.bind(this);
+        this.changeimage=this.changeimage.bind(this);
         this.changeUserid = this.changeUserid.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.saveEmployee = this.saveEmployee.bind(this);
@@ -41,12 +44,12 @@ class CreateEmployeeComponent extends Component {
 
         if (this.state.name == '' && this.state.address == '' && this.state.date == ''
             && this.state.email == '' && this.state.mobile == '' && this.state.userid == ''
-            && this.state.password == '') {
+            && this.state.password == '' && this.state.image == '') {
             this.setState({
 
                 nameerror: "text field not empty", addresserror: "address field not empty", dateerror: "date field not empty"
                 , emailerror: "email field not empty", mobileerror: "mobile field not empty", useriderror: "userid field not empty"
-                , passworderror: "password field not empty"
+                , passworderror: "password field not empty" , imageerror: "plz select image"
             })
         }
 
@@ -68,12 +71,16 @@ class CreateEmployeeComponent extends Component {
         else if (this.state.mobile == '') {
             this.setState({ mobileerror: "mobile no is required" })
         }
+        else if (this.state.image == '') {
+            this.setState({ imageerror: "image  is required" })
+        }
         else if (this.state.userid == '') {
             this.setState({ useriderror: "userid is required" })
         }
         else if (this.state.password == '') {
             this.setState({ passworderror: "password is required" })
         }
+
         else {
             return true
         }
@@ -90,15 +97,33 @@ class CreateEmployeeComponent extends Component {
             e_password: this.state.password
         };
 
+      let file = {
+          image:this.state.image
+      }
+
+   
+
+
+        
+    // for image code
+
+  
+    // console.log(e.target.files);
+    // const file = new FormData();
+    // file.append('file', file);
+
+        //  const file=new FormData();
+        //  file.append("file name",this.state.image);
+        
         console.log('emp =>' + JSON.stringify(emp));
-
-
+        console.log('file =>' + JSON.stringify(file));
+        // console.log(this.state.image);
 
         {
             this.setState({
                 Nameerror: "", Addresserror: "", Dateerror: ""
                 , Emailerror: "", Mobileerror: "", Useriderror: ""
-                , passworderror: ""
+                , passworderror: "" , imageerror: ""
             })
         }
 
@@ -106,7 +131,7 @@ class CreateEmployeeComponent extends Component {
         if (this.valid()) {
 
 
-            Employeeservice.createEmployee(emp).then(res => {
+            Employeeservice.createEmployee(emp,file).then(res => {
 
                 this.props.history.push('/employee');
 
@@ -142,7 +167,44 @@ class CreateEmployeeComponent extends Component {
 
     changeMobile = (event) => {
         this.setState({ mobile: event.target.value });
+        console.log(event.target.value);
     }
+
+     changeimage=(event)=>{
+
+     
+    //     //  let file=event.target.files[0];
+    let formdata=new FormData();
+        console.log(event.target.files[0]);
+        if (event.target && event.target.files[0]) 
+        {
+            formdata.append("file",event.target.files[0]);
+            // this.setState({image:formdata});
+        }
+    //  this.setState({image:event.target.files});
+
+        
+
+    //     // const formdata=new FormData();
+
+    //     // formdata.append("append file",files[0]);
+    //     // let file=new FileReader();
+    //     // file.readAsDataURL(files[0])
+    //     // console.log("file available",files);
+    //     // this.setState({image: event.target.files });
+    //     // console.log(event.target.files);
+    //     // this.state.image=files[0];
+    //     // console.log(this.state.image=files[0]);
+    //     // console.log(FormData);
+    //     //  const formdata={image:file}
+    //     // this.setState({ image:file});
+    //     //  console.log(formdata);
+    //     //  console.log(file);
+    //     //  var fReader = new FileReader();
+    //     // fReader.readAsDataURL(event.target.input.files[0]);   
+    //     // console.log(fReader);
+
+     }
 
     changeUserid = (event) => {
         this.setState({ userid: event.target.value });
@@ -170,10 +232,10 @@ class CreateEmployeeComponent extends Component {
 
                             <div className="card-body">
 
-                                <form>
+                                <form >
                                     <div className="form-group">
                                         <label>Name</label>
-                                        <input type="text" name="name" className="form-control"
+                                        <input type="text" name="name" className="form-control" 
                                             value={this.state.name}
                                             onChange={this.changeName} />
                                         <span style={{ color: "red" }}>{this.state.nameerror}</span>
@@ -219,6 +281,14 @@ class CreateEmployeeComponent extends Component {
                                             value={this.state.mobile}
                                             onChange={this.changeMobile} />
                                         <span style={{ color: "red" }}>{this.state.mobileerror}</span>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>image</label>
+                                        <input type="file" name="image" className="form-control" 
+                                            value={this.state.image}
+                                            onChange={this.changeimage} />  
+                                        <span style={{ color: "red" }}>{this.state.imageerror}</span>
                                     </div>
 
                                     <div className="form-group">

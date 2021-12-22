@@ -3,13 +3,9 @@ import './App.css';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Showemployee from './components/Showemployee';
 import ShowAdmin from './components/ShowAdmin';
-
-
 import HeaderComponent from './components/HeaderComponent';
 
 //import FooterComponent from './components/FooterComponent';
-   
-
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import CreateAdminComponent from './components/CreateAdminComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
@@ -24,9 +20,6 @@ import { Dashboard } from './components/dashboard/dashboard';
 import QuizSubmitResponse from './components/QuizSubmitResponse';
 import LeaderBoard from './components/LeaderBoard';
 import { UserDashboard } from './components/dashboard/UserDashboard';
-
-
-
 
 function App() {
   return (
