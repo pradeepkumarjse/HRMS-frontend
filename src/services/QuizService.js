@@ -13,6 +13,14 @@ class QuizService {
 
     }
 
+    getTopScore(){
+        return axios.get(QUIZ_API_BASE_URL+'/score');
+    }
+
+    deleteUserScore(id){
+        return axios.delete(QUIZ_API_BASE_URL+'/delete-user-score/'+id);
+    }
+
 }
 
 export default new QuizService();

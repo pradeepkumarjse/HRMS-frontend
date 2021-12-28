@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 const HeaderComponent = (props)=> {
     const [userData, setData] = useState({});
     const dispatch = useDispatch();
+    let history = useHistory();
 
     React.useEffect(() => {
         fetchUserData().then((response) => {
@@ -23,7 +24,7 @@ const HeaderComponent = (props)=> {
         })
     }, [])
 
-    let history = useHistory();
+   
     const logOut = (e) => {
         
         localStorage.clear()
@@ -38,7 +39,7 @@ const HeaderComponent = (props)=> {
                     <nav className="navbar navbar-expand-md bg-primary">
                         <div className="container-fluid">
 
-                            <a href="/" className="navbar-brand text-white">HRMS Dashboard</a>
+                            <a href="/dashboard" className="navbar-brand text-white">HRMS Dashboard</a>
 
                             <div className="d-flex">
                                  <Button className="fa fa-user-circle-o" style={{color:"white"}}>{userData && `${userData.firstName} ${userData.lastName}`}</Button>
