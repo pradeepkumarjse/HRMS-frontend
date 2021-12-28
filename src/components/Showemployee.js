@@ -13,11 +13,13 @@ class showemployee extends Component {
             employees: []
         }
 
-        // this.addEmployee=this.addEmployee.bind(this);
+      
         this.editEmployee = this.editEmployee.bind(this);
         this.deleteEmployee = this.deleteEmployee.bind(this);
+        
     }
 
+  
     // here call our rest api using componentDidMount
     componentDidMount() {
 
@@ -68,6 +70,7 @@ class showemployee extends Component {
                                 <th>Mobile</th>
                                 <th>Userid</th>
                                 <th>Password</th>
+                                <th>image</th>
                                 <th className="text-center">Action</th>
 
                             </tr>
@@ -90,6 +93,7 @@ class showemployee extends Component {
                                             <td>{employee.e_mobile}</td>
                                             <td>{employee.e_userid}</td>
                                             <td>{employee.e_password}</td>
+                                            <td><img  src={"data:image/jpg;base64," + employee.image} alt='abc' width={30}  height={30} style={{borderRadius: '50%'}} /></td>
                                             <td>
 
 

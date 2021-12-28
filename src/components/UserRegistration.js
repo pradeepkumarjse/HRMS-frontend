@@ -108,19 +108,19 @@ const UserRegistration = (props) => {
                             <form>
                                 <div className="form-group">
                                     <label>First name</label>
-                                    <input type="text" value={firstName} onChange={handleFirstName} placeholder="First Name" className="form-control mb-1" />
+                                    <input type="text" value={firstName} onChange={handleFirstName} placeholder="First Name" className="form-control mb-1" required/>
                                     <label>Last name</label>
-                                    <input type="text" value={lastName} onChange={handleLastName} placeholder="Last Name" className="form-control mb-1" />
+                                    <input type="text" value={lastName} onChange={handleLastName} placeholder="Last Name" className="form-control mb-1" required/>
                                     <label>Email</label>
-                                    <input type="email" value={email} onChange={handleEmail} placeholder="Email" className="form-control mb-1" />
+                                    <input type="email" value={email} onChange={handleEmail} placeholder="Email" className="form-control mb-1" required/>
                                     <label>Phone</label>
-                                    <input type="text" placeholder="Phone no" value={phone} onChange={handlePhone} className="form-control mb-1" />
-                                    <label>Profile pic (please select png file only)</label>
+                                    <input type="text" placeholder="Phone no" value={phone} onChange={handlePhone} className="form-control mb-1" required />
+                                    <label>Profile pic</label>
                                     <input type="file" onChange={handleUploadClick} placeholder="profile" className="form-control mb-1 mt-1" />
                                     <label>Username</label>
-                                    <input type="text" value={username} onChange={handleUsername} placeholder="Username" className="form-control mb-1" />
+                                    <input type="text" value={username} onChange={handleUsername} placeholder="Username" className="form-control mb-1" required/>
                                     <label>Password</label>
-                                    <input type="password" value={password} onChange={handlePassword} placeholder="New Password" className="form-control mb-1" />
+                                    <input type="password" value={password} onChange={handlePassword} placeholder="New Password" className="form-control mb-1" required />
 
                                 </div>
 
