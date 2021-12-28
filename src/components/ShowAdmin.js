@@ -46,6 +46,7 @@ class ShowAdmin extends Component {
         return (
             <div>
                 <HeaderComponent/>
+                <div className='container'>
                 <h2 className="text-center" >Admin List</h2>
                 <div>
                     {/* <button className="btn btn-success" onClick={this.addAdmin}>Add Admin</button> */}
@@ -97,7 +98,7 @@ class ShowAdmin extends Component {
                        
          
                         <button className="btn btn-success btn-sm " onClick={()=>this.editAdmin(admin.e_id)}>Update</button>
-                        <button className="btn btn-danger btn-sm" onClick={()=>this.deleteAdmin(admin.e_id)} style={{marginLeft:"2px"}}>Delete</button> 
+                        <button className="btn btn-danger btn-sm" onClick={()=>this.deleteAdmin(admin.e_id)} style={{marginTop:"5px"}}>Delete</button> 
                         </td>
                         </tr>
                     )
@@ -105,7 +106,7 @@ class ShowAdmin extends Component {
                 </tbody>
 
                </table>
-               
+               </div>
             </div>
         );
     }

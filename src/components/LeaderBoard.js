@@ -4,12 +4,14 @@ import { fetchUserData } from '../api/authenticationService';
 import QuizService from '../services/QuizService';
 import { ToastContainer, toast } from 'react-toastify';
 import style from 'radium/lib/components/style';
+import MyToast from "./MyToast";
 
 
 
 export default function LeaderBoard(props) {
     const [userData, setUserData] = useState({});
     const [leaderBoard, setLeaderBoard] = useState([]);
+    
 
     React.useEffect(() => {
         fetchUserData().then((response) => {
@@ -21,7 +23,7 @@ export default function LeaderBoard(props) {
         getAllScore();
     }, [])
 
-
+  
     const getAllScore = () => {
         QuizService.getTopScore().then((response) => {
             setLeaderBoard(response.data);
@@ -35,7 +37,7 @@ export default function LeaderBoard(props) {
     function deleteResult(id) {
         QuizService.deleteUserScore(id).then(
             res => {
-                toast.success("candidate removed successfully");
+                toast.success("candidate removed successfully..");
                 setLeaderBoard(leaderBoard.filter(lb => lb.id !== id));
             }
         )
