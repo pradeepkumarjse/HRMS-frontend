@@ -2,12 +2,6 @@ import axios from "axios";
 
 const EMPLOYEE_API_BASE_URL = "http://localhost:4041/realcoder/api/employees";
 
-const headers = { 
-    'content-type': 'application/json',
-    
-
-};
-
 class Employeeservice {
 
     getEmployee() {
@@ -17,15 +11,14 @@ class Employeeservice {
 
     createEmployee(emp,file) {
 
-      
-        return axios.post( EMPLOYEE_API_BASE_URL, emp,file)
-
-        // return axios({
-        //     url:EMPLOYEE_API_BASE_URL,
-        //     method:"POST",
-        //     emp,
-        //     file
-        // })
+    console.log(JSON.stringify(emp));
+    console.log(file);
+        return axios.post( EMPLOYEE_API_BASE_URL,emp,file,
+           { headers: {
+                "Content-Type": "application/json"
+              }}
+             
+       );
 
     }
 

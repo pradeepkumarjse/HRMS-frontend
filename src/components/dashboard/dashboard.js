@@ -47,6 +47,7 @@ export const Dashboard = (props) => {
                         <Link to="/questions" className="btn list-group-item list-group-item-action ">Question</Link>
                         <Link to="/leader_board" className="btn list-group-item list-group-item-action ">LeaderBoard</Link>
                         <Link to="/user" className="btn list-group-item list-group-item-action ">Start Assessment</Link>
+                        <Link to="/csvfile" className="btn list-group-item list-group-item-action ">Csv File</Link>
 
                </nav>
                 </div>
