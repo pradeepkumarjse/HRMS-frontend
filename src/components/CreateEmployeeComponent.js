@@ -97,6 +97,7 @@ class CreateEmployeeComponent extends Component {
             e_password: this.state.password
         };
 
+<<<<<<< HEAD
       let file = {
           image:this.state.image
       }
@@ -118,7 +119,27 @@ class CreateEmployeeComponent extends Component {
         console.log('emp =>' + JSON.stringify(emp));
         console.log('file =>' + JSON.stringify(file));
         // console.log(this.state.image);
+=======
+    //   let file = {
+    //       image:this.state.image
+    //   }
 
+    //  // code for image
+
+     const file = new FormData();
+>>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
+
+    file.append(
+        "file",this.state.image
+      );
+
+  //  let file=this.state.image;
+
+      console.log(file);
+    //  console.log(excelfile);
+
+      //  console.log('emp =>' + JSON.stringify(emp));
+     //   console.log(this.state.image);
         {
             this.setState({
                 Nameerror: "", Addresserror: "", Dateerror: ""
@@ -170,6 +191,7 @@ class CreateEmployeeComponent extends Component {
         console.log(event.target.value);
     }
 
+<<<<<<< HEAD
      changeimage=(event)=>{
 
      
@@ -203,6 +225,14 @@ class CreateEmployeeComponent extends Component {
     //     //  var fReader = new FileReader();
     //     // fReader.readAsDataURL(event.target.input.files[0]);   
     //     // console.log(fReader);
+=======
+    changeimage=(event)=>{
+
+        if(event.target)
+        {
+           this.setState({image:event.target.files[0]});
+        }
+>>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
 
      }
 
@@ -232,7 +262,11 @@ class CreateEmployeeComponent extends Component {
 
                             <div className="card-body">
 
+<<<<<<< HEAD
                                 <form >
+=======
+                                <form action="true">
+>>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
                                     <div className="form-group">
                                         <label>Name</label>
                                         <input type="text" name="name" className="form-control" 
@@ -286,7 +320,11 @@ class CreateEmployeeComponent extends Component {
                                     <div className="form-group">
                                         <label>image</label>
                                         <input type="file" name="image" className="form-control" 
+<<<<<<< HEAD
                                             value={this.state.image}
+=======
+                                          enctype='multipart/form-data' 
+>>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
                                             onChange={this.changeimage} />  
                                         <span style={{ color: "red" }}>{this.state.imageerror}</span>
                                     </div>

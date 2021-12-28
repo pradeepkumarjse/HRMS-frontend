@@ -3,8 +3,6 @@ import { fetchUserData } from '../api/authenticationService';
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router";
 
-
-
 export default function QuizSubmitResponse(props) {
     let history = useHistory();
     let location = useLocation();
@@ -26,12 +24,10 @@ export default function QuizSubmitResponse(props) {
         props.history.push("/dashboard")
     }
 
-
-
-
     return (
         <div>
             <div className="text-center mt-5">
+<<<<<<< HEAD
                 <div className="container">
                     <h2 style={{ color: '#456E59' }}>Thank you for giving the Assessment...</h2>
                 </div>
@@ -41,6 +37,18 @@ export default function QuizSubmitResponse(props) {
                     <br />
                     <button className='btn btn-info' onClick={sendFeedback}>send feedback</button>
                 </div>
+=======
+            <div className="container">
+                 <h2 style={{ color: 'green' }}>Thanks for giving the Assessment...</h2>
+            </div>
+                 <br/>
+                 <div >
+                 <textarea  name="subject" value={userFeedback} onChange={ e => setUserFeedback(e.target.value)} placeholder="Write something.." style={{"height" : "200px", "width" : "400px"}}></textarea><br />
+                 <button onClick={sendFeedback} className="btn btn-primary">send feedback</button>
+                 </div>
+
+               
+>>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
             </div>
         </div>
     )
