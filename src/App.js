@@ -20,6 +20,7 @@ import { Dashboard } from './components/dashboard/dashboard';
 import QuizSubmitResponse from './components/QuizSubmitResponse';
 import LeaderBoard from './components/LeaderBoard';
 import { UserDashboard } from './components/dashboard/UserDashboard';
+import CsvFileComponent from './components/CsvFileComponent';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/user" exact component={User} ></Route>
           <Route path="/assessment" exact component={Assessment} ></Route>
 
+
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/questions" component={ListQuestionsComponent} ></Route>
@@ -54,6 +56,8 @@ function App() {
           <Route exact path="/quiz_submit_response" component={QuizSubmitResponse} />
           <Route exact path="/leader_board" component={LeaderBoard} />
           <Route exact path="/user-dashboard" component={UserDashboard}/>
+
+          <Route path="/csvfile" exact component={CsvFileComponent} ></Route>
 
 
         </Switch>
