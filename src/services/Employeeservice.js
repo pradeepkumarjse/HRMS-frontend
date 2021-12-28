@@ -9,9 +9,17 @@ class Employeeservice {
         return axios.get(EMPLOYEE_API_BASE_URL);
     }
 
-    createEmployee(emp) {
+    createEmployee(emp,file) {
 
-        return axios.post(EMPLOYEE_API_BASE_URL, emp)
+    console.log(JSON.stringify(emp));
+    console.log(file);
+        return axios.post( EMPLOYEE_API_BASE_URL,emp,file,
+           { headers: {
+                "Content-Type": "application/json"
+              }}
+             
+       );
+
     }
 
     getEmployeeById(id) {

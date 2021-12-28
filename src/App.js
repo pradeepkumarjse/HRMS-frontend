@@ -3,13 +3,9 @@ import './App.css';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Showemployee from './components/Showemployee';
 import ShowAdmin from './components/ShowAdmin';
-
-
 import HeaderComponent from './components/HeaderComponent';
 
 //import FooterComponent from './components/FooterComponent';
-   
-
 import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import CreateAdminComponent from './components/CreateAdminComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
@@ -24,9 +20,13 @@ import { Dashboard } from './components/dashboard/dashboard';
 import QuizSubmitResponse from './components/QuizSubmitResponse';
 import LeaderBoard from './components/LeaderBoard';
 import { UserDashboard } from './components/dashboard/UserDashboard';
+
 import UserRegistration from './components/UserRegistration';
 
 
+
+
+import CsvFileComponent from './components/CsvFileComponent';
 
 
 function App() {
@@ -50,6 +50,7 @@ function App() {
           <Route path="/user" exact component={User} ></Route>
           <Route path="/assessment" exact component={Assessment} ></Route>
 
+
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/questions" component={ListQuestionsComponent} ></Route>
@@ -64,6 +65,8 @@ function App() {
           <Route exact path="/user-dashboard" component={UserDashboard}/>
           <Route exact path="/register" component={UserRegistration}/>
 
+
+          <Route path="/csvfile" exact component={CsvFileComponent} ></Route>
 
 
         </Switch>
