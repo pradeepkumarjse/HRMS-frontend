@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Employeeservice from '../services/Employeeservice';
 import HeaderComponent from './HeaderComponent';
-
+import axios from 'axios';
 class CreateEmployeeComponent extends Component {
 
     constructor(props) {
@@ -87,7 +87,7 @@ class CreateEmployeeComponent extends Component {
 
     }
 
-    saveEmployee = (e) => {
+    saveEmployee = async (e) => {
 
         e.preventDefault();
 
@@ -103,18 +103,18 @@ class CreateEmployeeComponent extends Component {
 
     //  // code for image
 
-     const file = new FormData();
+    //  const file = new FormData();
 
-    file.append(
-        "file",this.state.image
-      );
+    // file.append(
+    //     "file",this.state.image
+    //   );
 
-  //  let file=this.state.image;
+   let file=this.state.image;
 
-      console.log(file);
+     console.log(file);
     //  console.log(excelfile);
 
-      //  console.log('emp =>' + JSON.stringify(emp));
+       console.log('emp =>' + JSON.stringify(emp));
      //   console.log(this.state.image);
         {
             this.setState({
@@ -128,7 +128,7 @@ class CreateEmployeeComponent extends Component {
         if (this.valid()) {
 
 
-            Employeeservice.createEmployee(emp,file).then(res => {
+        await  axios.post("http://localhost:4041/realcoder/api/employees",emp).then(res => {
 
                 this.props.history.push('/employee');
 
@@ -202,7 +202,7 @@ class CreateEmployeeComponent extends Component {
 
                             <div className="card-body">
 
-                                <form action="true">
+                                <form action="true" enctype="multipart/form-data">
                                     <div className="form-group">
                                         <label>Name</label>
                                         <input type="text" name="name" className="form-control" 
