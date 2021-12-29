@@ -6,6 +6,8 @@ import { userLogin } from '../api/authenticationService';
 import { Alert, Spinner } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
+
 
 
 const LoginPage = ({ loading, error, ...props }) => {
@@ -15,7 +17,7 @@ const LoginPage = ({ loading, error, ...props }) => {
         password: ''
     });
 
-    
+
 
 
     const handleSubmit = (e) => {
@@ -23,30 +25,24 @@ const LoginPage = ({ loading, error, ...props }) => {
         props.authenticate();
 
         userLogin(values).then((response) => {
-            toast.error("question deleted successfully")
-
             console.log("response", response);
-
             if (response.status === 200) {
-                
-       
-
                 props.setUser(response.data);
                 props.history.push('/dashboard');
             }
-
             else {
                 props.loginFailure('Something Wrong!Please Try Again');
             }
-
-
+            
         }).catch((err) => {
             if (err && err.response) {
                 switch (err.response.status) {
                     case 401:
-                        console.log("401 status");
-                        props.loginFailure("Authentication Failed.Bad Credentials");
+                            props.loginFailure("Authentication Failed.Bad Credentials");
                         break;
+                        case 403:
+                            this.props.loginFailure("Authorization Failed.Bad Credentials");
+                            break;
                     default:
                         props.loginFailure('Something Wrong!Please Try Again');
                 }
@@ -56,7 +52,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                 props.loginFailure('Something Wrong!Please Try Again');
             }
         });
-        console.log("Loading again",loading);
+        console.log("Loading again", loading);
 
 
     }
@@ -91,7 +87,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                                         </div>
                                         <div className="form-group">
                                             <label>Password
-                                                <a href="/forgotPassword" className="float-right">
+                                                <a href="/#" className="float-right">
                                                     Forgot Password?
                                                 </a>
                                             </label>
@@ -107,7 +103,7 @@ const LoginPage = ({ loading, error, ...props }) => {
                                             </div>
                                         </div>
                                         <div className="form-group m-0">
-                                            <button type="submit" className="btn btn-primary">
+                                            <button type="submit" className="btn btn-primary mt-2">
                                                 Login
                                                 {loading && (
                                                     <Spinner
@@ -118,22 +114,27 @@ const LoginPage = ({ loading, error, ...props }) => {
                                                         aria-hidden="true"
                                                     />
                                                 )}
-                                               
+
                                             </button>
+
+                                            <Link to="/register" style={{ marginLeft: "10px" }} className="btn btn-primary mt-2">
+                                                Register
+                                            </Link>
+
                                         </div>
                                     </form>
                                     <ToastContainer
-                                                    position="top-right"
-                                                    autoClose={5000}
-                                                    hideProgressBar={false}
-                                                    newestOnTop={false}
-                                                    closeOnClick
-                                                    rtl={false}
-                                                    pauseOnFocusLoss
-                                                    draggable
-                                                    pauseOnHover
-                                                />
-                                      
+                                        position="top-right"
+                                        autoClose={5000}
+                                        hideProgressBar={false}
+                                        newestOnTop={false}
+                                        closeOnClick
+                                        rtl={false}
+                                        pauseOnFocusLoss
+                                        draggable
+                                        pauseOnHover
+                                    />
+
                                     {error &&
                                         <Alert style={{ marginTop: '20px' }} variant="danger">
                                             {error}

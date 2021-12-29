@@ -20,7 +20,14 @@ import { Dashboard } from './components/dashboard/dashboard';
 import QuizSubmitResponse from './components/QuizSubmitResponse';
 import LeaderBoard from './components/LeaderBoard';
 import { UserDashboard } from './components/dashboard/UserDashboard';
+
+import UserRegistration from './components/UserRegistration';
+
+
+
+
 import CsvFileComponent from './components/CsvFileComponent';
+
 
 function App() {
   return (
@@ -56,6 +63,8 @@ function App() {
           <Route exact path="/quiz_submit_response" component={QuizSubmitResponse} />
           <Route exact path="/leader_board" component={LeaderBoard} />
           <Route exact path="/user-dashboard" component={UserDashboard}/>
+          <Route exact path="/register" component={UserRegistration}/>
+
 
           <Route path="/csvfile" exact component={CsvFileComponent} ></Route>
 

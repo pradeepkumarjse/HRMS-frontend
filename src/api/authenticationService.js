@@ -13,6 +13,13 @@ export const userLogin = (authRequest) => {
         'data': authRequest
     })
 }
+export const userLogout = (authRequest) => {
+    return axios({
+        'method': 'POST',
+        'url': `${process.env.hostUrl || 'http://localhost:4041'}/logout`,
+        'data': authRequest
+    })
+}
 
 export const fetchUserData = (authRequest) => {
     return axios({
