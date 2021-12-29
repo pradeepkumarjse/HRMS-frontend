@@ -9,18 +9,16 @@ class Employeeservice {
         return axios.get(EMPLOYEE_API_BASE_URL);
     }
 
-    createEmployee(emp,file) {
+//     createEmployee(emp,file) {  
+//    // console.log(emp);
+//    // console.log(file);
+//         return  axios.post( EMPLOYEE_API_BASE_URL,emp,
+//             {headers:{
+//                 "Content-Type": "application/json",emp
+//               }  }
+//        );
 
-    console.log(JSON.stringify(emp));
-    console.log(file);
-        return axios.post( EMPLOYEE_API_BASE_URL,emp,file,
-           { headers: {
-                "Content-Type": "application/json"
-              }}
-             
-       );
-
-    }
+//     }
 
     getEmployeeById(id) {
 
