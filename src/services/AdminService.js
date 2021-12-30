@@ -2,6 +2,11 @@ import axios from "axios";
 
 const ADMIN_API_BASE_URL = "http://localhost:4041/api/v1/admin";
 
+ const headers = {
+
+    'content-type': 'application/json',
+ };
+
 class Adminservice {
 
     getAdmin() {
@@ -9,9 +14,9 @@ class Adminservice {
         return axios.get(ADMIN_API_BASE_URL);
     }
 
-    createAdmin(emp) {
+    createAdmin(emp,file) {
 
-        return axios.post(ADMIN_API_BASE_URL, emp)
+        return axios.post(ADMIN_API_BASE_URL, emp,file)
     }
 
     getAdminById(id) {

@@ -16,7 +16,8 @@ class UpdateAdminComponent extends Component {
             gender: '',
             mobile: '',
             userid: '',
-            password: ''
+            password: '',
+            image:''
         }
 
         this.changeName = this.changeName.bind(this);
@@ -27,6 +28,7 @@ class UpdateAdminComponent extends Component {
         this.changeMobile = this.changeMobile.bind(this);
         this.changeUserid = this.changeUserid.bind(this);
         this.changePassword = this.changePassword.bind(this);
+        this.changeImage = this.changeImage.bind(this);
         this.updateAdmin = this.updateAdmin.bind(this);
     }
 
@@ -43,7 +45,8 @@ class UpdateAdminComponent extends Component {
                 gender: admin.e_gender,
                 mobile: admin.e_mobile,
                 userid: admin.e_userid,
-                password: admin.e_password
+                password: admin.e_password,
+                image: admin.e_image
 
             })
         });
@@ -56,7 +59,7 @@ class UpdateAdminComponent extends Component {
         let emp = {
             e_id: this.state.id, e_name: this.state.name, e_address: this.state.address, e_date: this.state.date,
             e_email: this.state.email, e_gender: this.state.gender, e_mobile: this.state.mobile, e_userid: this.state.userid,
-            e_password: this.state.password
+            e_password: this.state.password,image: this.state.image
         };
 
         console.log('emp =>' + JSON.stringify(emp));
@@ -101,6 +104,10 @@ class UpdateAdminComponent extends Component {
 
     changePassword = (event) => {
         this.setState({ password: event.target.value });
+    }
+
+    changeImage = (event) => {
+        this.setState({ image: event.target.value });
     }
     
     render() {
@@ -175,6 +182,14 @@ class UpdateAdminComponent extends Component {
                                         <input type="text" name="password" className="form-control"
                                             value={this.state.password}
                                             onChange={this.changePassword} />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>image</label>
+                                        <input type="file" name="image" className="form-control" 
+                                            value={this.state.image}
+                                            onChange={this.changeimage} />  
+                                        <span style={{ color: "red" }}>{this.state.imageerror}</span>
                                     </div>
 
                                     <button className="btn btn-success" onClick={this.updateAdmin}>Update</button>

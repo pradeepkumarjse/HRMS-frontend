@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Adminservice from '../services/Adminservice';
 import HeaderComponent from './HeaderComponent';
-
-
+          
 class Showadmin extends Component {
 
     constructor(props) {
@@ -68,6 +67,7 @@ class Showadmin extends Component {
                                 <th>Mobile</th>
                                 <th>Userid</th>
                                 <th>Password</th>
+                                <th>image</th>
                                 <th className="text-center">Action</th>
 
                             </tr>
@@ -90,6 +90,9 @@ class Showadmin extends Component {
                                             <td>{admin.e_mobile}</td>
                                             <td>{admin.e_userid}</td>
                                             <td>{admin.e_password}</td>
+                                           {/* <td><img  src={"data:image/jpg;base64," + admin.image} alt='abc' width={80}  height= {80}/></td>  */}
+                                           <td><img  src={"data:image/jpg;base64," + admin.image} alt='abc' width={80}  height={80} style={{borderRadius: '50%'}} /></td>
+
                                             <td>
 
 

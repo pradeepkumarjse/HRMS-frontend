@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import Adminservice from '../services/Adminservice';
 import HeaderComponent from './HeaderComponent';
@@ -16,6 +17,8 @@ class CreateAdminComponent extends Component {
             mobile: '',
             userid: '',
             password: '',
+            image:'',
+            
             nameerror: '',
             addresserror: '',
             dateerror: '',
@@ -23,6 +26,7 @@ class CreateAdminComponent extends Component {
             mobileerror: '',
             useriderror: '',
             passworderror: '',
+            imageerror:'',
 
         }
 
@@ -34,19 +38,20 @@ class CreateAdminComponent extends Component {
         this.changeMobile = this.changeMobile.bind(this);
         this.changeUserid = this.changeUserid.bind(this);
         this.changePassword = this.changePassword.bind(this);
+        this.changeimage = this.changeimage.bind(this);
         this.saveAdmin = this.saveAdmin.bind(this);
     }
 
     valid() {
 
-        if (this.state.name == '' && this.state.address == '' && this.state.date == ''
+        if (this.state.name == ''&& this.state.image == '' && this.state.address == '' && this.state.date == ''
             && this.state.email == '' && this.state.mobile == '' && this.state.userid == ''
             && this.state.password == '') {
             this.setState({
 
                 nameerror: "text field not empty", addresserror: "address field not empty", dateerror: "date field not empty"
                 , emailerror: "email field not empty", mobileerror: "mobile field not empty", useriderror: "userid field not empty"
-                , passworderror: "password field not empty"
+                , passworderror: "password field not empty", imageerror: "please select image"
             })
         }
 
@@ -73,6 +78,10 @@ class CreateAdminComponent extends Component {
         }
         else if (this.state.password == '') {
             this.setState({ passworderror: "password is required" })
+
+        }
+        else if (this.state.image == '') {
+            this.setState({ imageerror: "image is required" })
         }
         else {
             return true
@@ -80,7 +89,7 @@ class CreateAdminComponent extends Component {
 
     }
 
-    saveAdmin = (e) => {
+    saveAdmin = async (e) => {
 
         e.preventDefault();
 
@@ -90,25 +99,39 @@ class CreateAdminComponent extends Component {
             e_password: this.state.password
         };
 
+        // let file = {
+        //     image:this.state.image
+        // }
+
+        // image code
+        const file = new FormData();
+
+        file.append(
+            "file",this.state.image
+          );
+
         console.log('emp =>' + JSON.stringify(emp));
+        console.log('file =>' + JSON.stringify(file));
+//  console.log(this.state.image);
 
+console.log(file);
 
-
+console.log('emp =>' + JSON.stringify(emp));
         {
             this.setState({
                 Nameerror: "", Addresserror: "", Dateerror: ""
                 , Emailerror: "", Mobileerror: "", Useriderror: ""
-                , passworderror: ""
+                , passworderror: "",imageerror:""
             })
         }
 
 
         if (this.valid()) {
 
+            await axios.post("http://localhost:4041/api/v1/admin",emp).then(res=> {
+                
+            this.props.history.push('/Admin')
 
-            Adminservice.createAdmin(emp).then(res => {
-
-                this.props.history.push('/Admin');
 
             });
 
@@ -122,6 +145,10 @@ class CreateAdminComponent extends Component {
 
     changeName = (event) => {
         this.setState({ name: event.target.value });
+    }
+
+    changePhoto = (event) => {
+        this.setState({ photo: event.target.value });
     }
 
     changeAddress = (event) => {
@@ -151,9 +178,27 @@ class CreateAdminComponent extends Component {
     changePassword = (event) => {
         this.setState({ password: event.target.value });
     }
+     
+    changeimage=(event)=>{
+
+        //  let file=event.target.files[0];
+    let formdata=new FormData();
+    console.log(event.target.files[0]);
+    if (event.target && event.target.files[0]) 
+    {
+        formdata.append("file",event.target.files[0]);
+    }
+        // this.setState({image:formdata});
+    }
+    changeimage=(event)=>{
+
+        if(event.target)
+        {
+           this.setState({image:event.target.files[0]});
+        }
 
 
-
+     }
 
     render() {
         return (
@@ -170,7 +215,8 @@ class CreateAdminComponent extends Component {
 
                             <div className="card-body">
 
-                                <form>
+                                <form action="true" enctype="multipart/form-data">
+
                                     <div className="form-group">
                                         <label>Name</label>
                                         <input type="text" name="name" className="form-control"
@@ -235,6 +281,15 @@ class CreateAdminComponent extends Component {
                                             value={this.state.password}
                                             onChange={this.changePassword} />
                                         <span style={{ color: "red" }}>{this.state.passworderror}</span>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>image</label>
+                                        <input type="file" name="image" className="form-control" 
+                                            value={this.state.image}
+                                            enctype='multipart/form-data' 
+                                            onChange={this.changeimage} />  
+                                        <span style={{ color: "red" }}>{this.state.imageerror}</span>
                                     </div>
 
                                     <button className="btn btn-success" onClick={this.saveAdmin}>Save</button>
