@@ -141,7 +141,6 @@ class CreateQuestionComponent extends Component {
         formData.append("imageName","question");
         console.log(formData);
         QuestionService.createQuestion(question,formData).then(
-          console.log(question,formData),
           res => {
  
             this.props.history.push('/questions');

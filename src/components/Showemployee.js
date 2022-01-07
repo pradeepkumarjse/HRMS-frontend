@@ -93,11 +93,7 @@ class showemployee extends Component {
                                             <td>{employee.e_mobile}</td>
                                             <td>{employee.e_userid}</td>
                                             <td>{employee.e_password}</td>
-<<<<<<< HEAD
-                                            <td><img  src={"data:image/jpg;base64," + employee.image} alt='abc' width={30}  height={30} style={{borderRadius: '50%'}} /></td>
-=======
                                             <td><img  src={"data:image/jpg;base64," + employee.image} alt='abc' width={30}  height={30}/></td>
->>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
                                             <td>
 
 

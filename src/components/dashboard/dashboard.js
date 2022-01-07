@@ -45,13 +45,12 @@ export const Dashboard = (props) => {
             <div className="row m-0">
                 <div className="col-md-2 mt-2">
                     <nav className="list-group">
-<<<<<<< HEAD
 
 
-                        <Link to="/admin" className="btn  list-group-item list-group-item-action list-group-item-dark ">
-=======
+
+
                         <Link to="/admin" className="btn  list-group-item list-group-item-action list-group-item-dark " >
->>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
+
 
                             <i class="fa fa-user" aria-hidden="true"></i> Admin</Link>
                         <Link to="/employee" className="btn list-group-item list-group-item-action ">
@@ -59,7 +58,7 @@ export const Dashboard = (props) => {
                         <Link to="/questions" className="btn list-group-item list-group-item-action ">Question</Link>
                         <Link to="/leader_board" className="btn list-group-item list-group-item-action ">LeaderBoard</Link>
                         <Link to="/user" className="btn list-group-item list-group-item-action ">Start Assessment</Link>
-                        <Link to="/csvfile" className="btn list-group-item list-group-item-action ">Csv File</Link>
+                        <Link to="/csvfile" className="btn list-group-item list-group-item-action ">Upload User Data</Link>
 
                </nav>
                 </div>

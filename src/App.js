@@ -20,14 +20,13 @@ import { Dashboard } from './components/dashboard/dashboard';
 import QuizSubmitResponse from './components/QuizSubmitResponse';
 import LeaderBoard from './components/LeaderBoard';
 import { UserDashboard } from './components/dashboard/UserDashboard';
-<<<<<<< HEAD
+
 import UserRegistration from './components/UserRegistration';
 
 
 
-=======
+
 import CsvFileComponent from './components/CsvFileComponent';
->>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
 
 function App() {
   return (

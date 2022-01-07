@@ -97,29 +97,6 @@ class CreateEmployeeComponent extends Component {
             e_password: this.state.password
         };
 
-<<<<<<< HEAD
-      let file = {
-          image:this.state.image
-      }
-
-   
-
-
-        
-    // for image code
-
-  
-    // console.log(e.target.files);
-    // const file = new FormData();
-    // file.append('file', file);
-
-        //  const file=new FormData();
-        //  file.append("file name",this.state.image);
-        
-        console.log('emp =>' + JSON.stringify(emp));
-        console.log('file =>' + JSON.stringify(file));
-        // console.log(this.state.image);
-=======
     //   let file = {
     //       image:this.state.image
     //   }
@@ -127,7 +104,6 @@ class CreateEmployeeComponent extends Component {
     //  // code for image
 
      const file = new FormData();
->>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
 
     file.append(
         "file",this.state.image
@@ -191,48 +167,12 @@ class CreateEmployeeComponent extends Component {
         console.log(event.target.value);
     }
 
-<<<<<<< HEAD
-     changeimage=(event)=>{
-
-     
-    //     //  let file=event.target.files[0];
-    let formdata=new FormData();
-        console.log(event.target.files[0]);
-        if (event.target && event.target.files[0]) 
-        {
-            formdata.append("file",event.target.files[0]);
-            // this.setState({image:formdata});
-        }
-    //  this.setState({image:event.target.files});
-
-        
-
-    //     // const formdata=new FormData();
-
-    //     // formdata.append("append file",files[0]);
-    //     // let file=new FileReader();
-    //     // file.readAsDataURL(files[0])
-    //     // console.log("file available",files);
-    //     // this.setState({image: event.target.files });
-    //     // console.log(event.target.files);
-    //     // this.state.image=files[0];
-    //     // console.log(this.state.image=files[0]);
-    //     // console.log(FormData);
-    //     //  const formdata={image:file}
-    //     // this.setState({ image:file});
-    //     //  console.log(formdata);
-    //     //  console.log(file);
-    //     //  var fReader = new FileReader();
-    //     // fReader.readAsDataURL(event.target.input.files[0]);   
-    //     // console.log(fReader);
-=======
     changeimage=(event)=>{
 
         if(event.target)
         {
            this.setState({image:event.target.files[0]});
         }
->>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
 
      }
 
@@ -262,11 +202,7 @@ class CreateEmployeeComponent extends Component {
 
                             <div className="card-body">
 
-<<<<<<< HEAD
-                                <form >
-=======
                                 <form action="true">
->>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
                                     <div className="form-group">
                                         <label>Name</label>
                                         <input type="text" name="name" className="form-control" 
@@ -320,11 +256,7 @@ class CreateEmployeeComponent extends Component {
                                     <div className="form-group">
                                         <label>image</label>
                                         <input type="file" name="image" className="form-control" 
-<<<<<<< HEAD
-                                            value={this.state.image}
-=======
                                           enctype='multipart/form-data' 
->>>>>>> 9799bdd93205ae3c25d7eadc395f8e560666288a
                                             onChange={this.changeimage} />  
                                         <span style={{ color: "red" }}>{this.state.imageerror}</span>
                                     </div>
