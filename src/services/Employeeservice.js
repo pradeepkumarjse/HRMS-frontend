@@ -30,8 +30,8 @@ class Employeeservice {
         return axios.delete(EMPLOYEE_API_BASE_URL + '/' + e_id);
     }
 
-    updateEmployee(e_id, employee) {
-        return axios.put(EMPLOYEE_API_BASE_URL + '/' + e_id, employee);
+    updateEmployee(e_id,file) {
+        return axios.put(EMPLOYEE_API_BASE_URL + '/' + e_id,file);
     }
 
 }

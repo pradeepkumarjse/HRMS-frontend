@@ -7,5 +7,4 @@ const store = createStore(rootReducer,applyMiddleware(thunk));
 
 axios.defaults.baseURL = 'http://localhost:4041';
 
-
 export default store;

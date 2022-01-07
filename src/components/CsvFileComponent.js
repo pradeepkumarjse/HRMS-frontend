@@ -1,24 +1,30 @@
 import React, {useState} from 'react'
-import axios from 'axios';
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 const CsvFileComponent =()=> {
 
+    let history=useHistory();
 const [excelfile, setexcelfile] = useState();
 
 const uploadfile = async ()=>{
-
-    console.log("file uploading  in process..");
-  
+    
     const file = new FormData();
 
     file.append(
         "file",excelfile
       );
 
-      console.log(file);
-      console.log(excelfile);
+   //   console.log(file);
+    //  console.log(excelfile);
 
-      await  axios.post("http://localhost:4041/uploadcsvfile",file);    
+      await  axios.post("http://localhost:4041/uploadcsvfile",file);
+      toast.success('Csv File successfully upload', {autoClose:3000})
+            history.push('/dashboard');   
 
 
 }

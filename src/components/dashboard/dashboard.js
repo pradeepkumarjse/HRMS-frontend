@@ -47,7 +47,7 @@ export const Dashboard = (props) => {
                     <nav className="list-group">
 
 
-                        <Link to="/admin" className="btn  list-group-item list-group-item-action list-group-item-dark ">
+
 
                         <Link to="/admin" className="btn  list-group-item list-group-item-action list-group-item-dark " >
 
@@ -58,7 +58,8 @@ export const Dashboard = (props) => {
                         <Link to="/questions" className="btn list-group-item list-group-item-action ">Question</Link>
                         <Link to="/leader_board" className="btn list-group-item list-group-item-action ">LeaderBoard</Link>
                         <Link to="/user" className="btn list-group-item list-group-item-action ">Start Assessment</Link>
-                        <Link to="/csvfile" className="btn list-group-item list-group-item-action ">Csv File</Link>
+                        <Link to="/csvfile" className="btn list-group-item list-group-item-action ">Upload User Data</Link>
+                        <Link to="/emailsend" className="btn list-group-item list-group-item-action">Email Send</Link>
 
                </nav>
                 </div>

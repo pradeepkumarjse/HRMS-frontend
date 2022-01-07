@@ -96,8 +96,6 @@ class showemployee extends Component {
 
                                             <td><img  src={"data:image/jpg;base64," + employee.image} alt='abc' width={30}  height={30} style={{borderRadius: '50%'}} /></td>
 
-                                            <td><img  src={"data:image/jpg;base64," + employee.image} alt='abc' width={30}  height={30}/></td>
-
                                             <td>
 
 
