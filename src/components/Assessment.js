@@ -11,7 +11,7 @@ import HeaderComponent from "./HeaderComponent";
 
 const Assessment = (props) => {
 
-  const hoursMinSecs = { hours: 0, minutes: 0, seconds: 15 }
+  const hoursMinSecs = { hours: 0, minutes: 0, seconds: 20 }
 
 
   

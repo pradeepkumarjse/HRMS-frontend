@@ -27,6 +27,11 @@ import UserRegistration from './components/UserRegistration';
 
 
 import CsvFileComponent from './components/CsvFileComponent';
+<<<<<<< HEAD
+=======
+import EmailComponent from './components/EmailComponent';
+
+>>>>>>> 34a66db9fc6167df2a72981b2e227b2cb8b23b7c
 
 function App() {
   return (
@@ -66,6 +71,7 @@ function App() {
 
 
           <Route path="/csvfile" exact component={CsvFileComponent} ></Route>
+          <Route path="/emailsend"  component={EmailComponent} />
 
 
         </Switch>

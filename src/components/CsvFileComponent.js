@@ -1,24 +1,39 @@
 import React, {useState} from 'react'
+<<<<<<< HEAD
 import axios from 'axios';
 import HeaderComponent from "./HeaderComponent";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 
+=======
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
+>>>>>>> 34a66db9fc6167df2a72981b2e227b2cb8b23b7c
 
 const CsvFileComponent =()=> {
 
+    let history=useHistory();
 const [excelfile, setexcelfile] = useState();
 
 let history=useHistory();
 const uploadfile = async ()=>{
+<<<<<<< HEAD
 
   
+=======
+    
+>>>>>>> 34a66db9fc6167df2a72981b2e227b2cb8b23b7c
     const file = new FormData();
 
     file.append(
         "file",excelfile
       );
 
+<<<<<<< HEAD
      
       await  axios.post("http://localhost:4041/uploadcsvfile",file).then(
         res => {
@@ -29,6 +44,14 @@ const uploadfile = async ()=>{
         error =>{
             toast.error("file not uploaded");          
         }
+=======
+   //   console.log(file);
+    //  console.log(excelfile);
+
+      await  axios.post("http://localhost:4041/uploadcsvfile",file);
+      toast.success('Csv File successfully upload', {autoClose:3000})
+            history.push('/dashboard');   
+>>>>>>> 34a66db9fc6167df2a72981b2e227b2cb8b23b7c
 
     );
 

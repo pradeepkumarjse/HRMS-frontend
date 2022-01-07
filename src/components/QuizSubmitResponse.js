@@ -27,6 +27,7 @@ export default function QuizSubmitResponse(props) {
     return (
         <div>
             <div className="text-center mt-5">
+<<<<<<< HEAD
 
                 <div className="container">
                     <h2 style={{ color: '#456E59' }}>Thank you for giving the Assessment...</h2>
@@ -40,6 +41,20 @@ export default function QuizSubmitResponse(props) {
            
 
                
+=======
+
+            <div className="container">
+                 <h2 style={{ color: 'green' }}>Thanks for giving the Assessment...</h2>
+            </div>
+                 <br/>
+                 <div >
+                 <textarea  name="subject" value={userFeedback} onChange={ e => setUserFeedback(e.target.value)} placeholder="Write something.." style={{"height" : "200px", "width" : "400px"}}></textarea><br />
+                 <button onClick={sendFeedback} className="btn btn-primary">send feedback</button>
+                 </div>
+
+               
+
+>>>>>>> 34a66db9fc6167df2a72981b2e227b2cb8b23b7c
             </div>
         </div>
     )

@@ -59,6 +59,10 @@ export const Dashboard = (props) => {
                         <Link to="/leader_board" className="btn list-group-item list-group-item-action ">LeaderBoard</Link>
                         <Link to="/user" className="btn list-group-item list-group-item-action ">Start Assessment</Link>
                         <Link to="/csvfile" className="btn list-group-item list-group-item-action ">Upload User Data</Link>
+<<<<<<< HEAD
+=======
+                        <Link to="/emailsend" className="btn list-group-item list-group-item-action">Email Send</Link>
+>>>>>>> 34a66db9fc6167df2a72981b2e227b2cb8b23b7c
 
                </nav>
                 </div>
