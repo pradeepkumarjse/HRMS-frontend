@@ -73,6 +73,11 @@ class UpdateEmployeeComponent extends Component {
 
           file.append("emp",blob);
 
+
+      //  console.log('emp =>' + JSON.stringify(emp));
+
+
+
       //  console.log('emp =>' + JSON.stringify(emp));
 
         Employeeservice.updateEmployee(this.state.id,file).then(res => {
@@ -226,5 +231,3 @@ class UpdateEmployeeComponent extends Component {
 }
 
 export default UpdateEmployeeComponent;
-
-
