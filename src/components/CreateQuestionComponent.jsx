@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import QuestionService from '../services/QuestionService';
 //import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import HeaderComponent from './HeaderComponent';
 
 
 
@@ -20,6 +21,8 @@ class CreateQuestionComponent extends Component {
       op3: '',
       op4: '',
       ans_option: '',
+      picPath:'',
+      imageData:null,
       questionerror: '',
       op1error: '',
       op2error: '',
@@ -37,6 +40,7 @@ class CreateQuestionComponent extends Component {
     this.ChangeOption4HandlerHandler = this.ChangeOption4HandlerHandler.bind(this);
     this.ChangeAnswerOptionHandlerHandler = this.ChangeAnswerOptionHandlerHandler.bind(this);
     this.saveOrUpdateQuestion = this.saveOrUpdateQuestion.bind(this);
+    //this.ChangeFileHandler=this.ChangeFileHandler(this);
 
   }
 
@@ -82,7 +86,6 @@ class CreateQuestionComponent extends Component {
 
   //  step 3
   componentDidMount() {
-    console.log(this.state.id)
     //step 4
     if (this.state.id === '_add') {
       return
@@ -98,14 +101,16 @@ class CreateQuestionComponent extends Component {
           op2: question.op2,
           op3: question.op3,
           op4: question.op4,
-          ans_option: question.ans_option
+          ans_option: question.ans_option,
+          picPath:question.picPath
         });
       });
     }
 
 
   }
-  cancel() {
+  cancel(e) {
+    e.preventDefault();
     this.props.history.push('/questions');
   }
 
@@ -113,8 +118,12 @@ class CreateQuestionComponent extends Component {
 
     e.preventDefault();
 
-    let question = { question: this.state.question, op1: this.state.op1, op2: this.state.op2, op3: this.state.op3, op4: this.state.op4, ans_option: this.state.ans_option };
-    console.log('employee=>' + JSON.stringify(question));
+    let question = { question: this.state.question, op1: this.state.op1, op2: this.state.op2, op3: this.state.op3, op4: this.state.op4, ans_option: this.state.ans_option,picPath:this.state.picPath };
+    console.log('questions=>' + JSON.stringify(question));
+
+    let imageData={ imageData :this.state.imageData};
+
+   
 
     {
       this.setState({
@@ -127,11 +136,18 @@ class CreateQuestionComponent extends Component {
     if (this.state.id === '_add') {
 
       if (this.valid()) {
-
-        QuestionService.createQuestion(question).then(
+        const formData=new FormData();
+        formData.append('imageFile',imageData);
+        formData.append("imageName","question");
+        console.log(formData);
+        QuestionService.createQuestion(question,formData).then(
+          console.log(question,formData),
           res => {
-
+ 
             this.props.history.push('/questions');
+          },
+          error =>{
+              console.log("question not created")
           }
 
         );
@@ -143,8 +159,7 @@ class CreateQuestionComponent extends Component {
     }
     else {
 
-      let question = { id: this.state.id, question: this.state.question, op1: this.state.op1, op2: this.state.op2, op3: this.state.op3, op4: this.state.op4, ans_option: this.state.ans_option };
-      console.log('Question=>' + JSON.stringify(question));
+      let question = { id: this.state.id, question: this.state.question, op1: this.state.op1, op2: this.state.op2, op3: this.state.op3, op4: this.state.op4, ans_option: this.state.ans_option,picPath:this.state.picPath};
 
       QuestionService.updateQuestion(question, this.state.id).then(res => {
 
@@ -154,7 +169,7 @@ class CreateQuestionComponent extends Component {
     }
   }
 
-
+  
 
   ChangeQuestionHandler = (event) => {
     this.setState({ question: event.target.value });
@@ -175,6 +190,18 @@ class CreateQuestionComponent extends Component {
   ChangeAnswerOptionHandlerHandler = (event) => {
     this.setState({ ans_option: event.target.value });
   }
+  
+  
+
+  ChangeFileHandler =(event)=>{
+    this.setState({imageData:event.target.files[0]});
+ //let file=event.target.files[0];
+  //const formData=new FormData();
+//formData.append('imageFile',file);
+ //this.setState({imageData:file});
+ //console.log(event.target.files[0]);
+  }
+
 
   getTitle() {
     if (this.state.id === '_add') {
@@ -188,6 +215,7 @@ class CreateQuestionComponent extends Component {
   render() {
     return (
       <div>
+        <HeaderComponent />
         <div className="conatiner">
           <div className="row">
             <div className="card col-md-6 offset-md-3 offset-md-3">
@@ -234,23 +262,21 @@ class CreateQuestionComponent extends Component {
                       value={this.state.ans_option} onChange={this.ChangeAnswerOptionHandlerHandler} />
                     <span style={{ color: "red" }}>{this.state.ans_optionerror}</span>
                   </div>
+
+                  <div className='form-group mt-2'>
+                    <label>Select file</label>
+                    <input type="file" className='form-control'  name="picPath"  onChange={this.ChangeFileHandler}/>
+                  </div>
+
+
                   <div style={{ marginTop: "10px" }} >
                     <button className="btn btn-success" onClick={this.saveOrUpdateQuestion}>Save</button>
-
-
                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>cancel</button>
-
-
-
-
                   </div>
                 </form>
-
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
     );

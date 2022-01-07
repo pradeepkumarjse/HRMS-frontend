@@ -15,7 +15,8 @@ class UpdateEmployeeComponent extends Component {
             email: '',
             gender: '',
             mobile: '',
-            userid: '',
+            image:'',
+            userid: '',                 
             password: ''
         }
 
@@ -25,6 +26,7 @@ class UpdateEmployeeComponent extends Component {
         this.changeEmail = this.changeEmail.bind(this);
         this.changeGender = this.changeGender.bind(this);
         this.changeMobile = this.changeMobile.bind(this);
+        this.changeImage=this.changeImage.bind(this);
         this.changeUserid = this.changeUserid.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.updateEmployee = this.updateEmployee.bind(this);
@@ -42,6 +44,8 @@ class UpdateEmployeeComponent extends Component {
                 email: employee.e_email,
                 gender: employee.e_gender,
                 mobile: employee.e_mobile,
+                image:employee.image,
+                image1:employee.image,
                 userid: employee.e_userid,
                 password: employee.e_password
 
@@ -53,15 +57,25 @@ class UpdateEmployeeComponent extends Component {
 
         e.preventDefault();
 
+        const file  = new FormData();
+        file.append("file",this.state.image );
+
         let emp = {
             e_id: this.state.id, e_name: this.state.name, address: this.state.address, e_date: this.state.date,
             e_email: this.state.email, e_gender: this.state.gender, e_mobile: this.state.mobile, e_userid: this.state.userid,
             e_password: this.state.password
         };
 
-        console.log('emp =>' + JSON.stringify(emp));
+        const emp1=JSON.stringify(emp);
+        const  blob= new Blob([emp1], {
+            type: 'application/json'
+          });
 
-        Employeeservice.updateEmployee(this.state.id, emp).then(res => {
+          file.append("emp",blob);
+
+      //  console.log('emp =>' + JSON.stringify(emp));
+
+        Employeeservice.updateEmployee(this.state.id,file).then(res => {
 
             this.props.history.push('/employee');
         });
@@ -95,6 +109,10 @@ class UpdateEmployeeComponent extends Component {
         this.setState({ mobile: event.target.value });
     }
 
+    changeImage = (event) => {
+        this.setState({ image: event.target.files[0] });
+    }
+
     changeUserid = (event) => {
         this.setState({ userid: event.target.value });
     }
@@ -117,6 +135,9 @@ class UpdateEmployeeComponent extends Component {
                         <div className="card col-md-4 offset-md-4">
 
                             <h3 className="text-center">Update Employee</h3>
+
+                            <img  src={"data:image/jpg;base64," + this.state.image1} alt='abc' width={60}  height={60} style={{borderRadius: '50%'}} className='mx-auto d-block' />
+               
 
                             <div className="card-body">
 
@@ -167,6 +188,14 @@ class UpdateEmployeeComponent extends Component {
                                     </div>
 
                                     <div className="form-group">
+                                        <label>Image</label>
+                                        <input type="file" name="file" className="form-control"
+                                          
+                                            onChange={this.changeImage} />
+                                            
+                                    </div>
+
+                                    <div className="form-group">
                                         <label>Userid</label>
                                         <input type="text" name="userid" className="form-control"
                                             value={this.state.userid}
@@ -182,11 +211,13 @@ class UpdateEmployeeComponent extends Component {
 
                                     <button className="btn btn-success" onClick={this.updateEmployee}>Update</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>cancel</button>
-
                                 </form>
                             </div>
                         </div>
                     </div>
+
+               
+
                 </div>
 
             </div>
@@ -195,5 +226,3 @@ class UpdateEmployeeComponent extends Component {
 }
 
 export default UpdateEmployeeComponent;
-
-

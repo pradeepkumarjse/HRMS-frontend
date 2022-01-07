@@ -1,14 +1,17 @@
 import axios from 'axios';
 
 const QUESTION_API_BASE_URL = "http://localhost:4041/api/v1/questions";
+const config={headers:{ 'content-type': 'multipart/form-data'}};
 class QuestionService {
 
     getQuestions() {
         return axios.get(QUESTION_API_BASE_URL);
     }
 
-    createQuestion(question) {
-        return axios.post(QUESTION_API_BASE_URL, question);
+    createQuestion(question,formData) {
+        console.log(question,formData)
+        return axios.post(QUESTION_API_BASE_URL, question,formData,config);
+          
     }
 
     getQuestionById(id) {
